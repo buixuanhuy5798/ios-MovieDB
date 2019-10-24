@@ -14,7 +14,7 @@ final class MainTabBarController: UITabBarController {
     }
     
     private func config() {
-        navigationController?.navigationBar.isHidden = true
+        self.hideNavigationBar()
     }
     
 }

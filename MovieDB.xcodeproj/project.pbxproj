@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		053BBD7423618FB90045660A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053BBD7323618FB90045660A /* UIViewController+.swift */; };
 		05745A292361665400FE11EA /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05745A282361665400FE11EA /* Storyboards.swift */; };
 		05745A2E23616B1000FE11EA /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05745A2D23616B1000FE11EA /* MainTabBar.storyboard */; };
 		05745A332361729E00FE11EA /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05745A322361729E00FE11EA /* AppNavigator.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		053BBD7323618FB90045660A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		05745A282361665400FE11EA /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		05745A2C236166FF00FE11EA /* Briding-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Briding-Header.h"; sourceTree = "<group>"; };
 		05745A2D23616B1000FE11EA /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
@@ -103,8 +105,10 @@
 		05745A232361660500FE11EA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				053BBD7323618FB90045660A /* UIViewController+.swift */,
 			);
-			path = Extensions;
+			name = Extensions;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		05745A242361660D00FE11EA /* Domain */ = {
@@ -466,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				053BBD7423618FB90045660A /* UIViewController+.swift in Sources */,
 				05745A292361665400FE11EA /* Storyboards.swift in Sources */,
 				05B0EDFE235FD9980046D5D4 /* MainTabBarController.swift in Sources */,
 				05745A35236172F800FE11EA /* AppViewModel.swift in Sources */,
