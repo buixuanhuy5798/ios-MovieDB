@@ -15,9 +15,8 @@ struct AppNavigator: AppNavigatorType {
     
     func toMain() {
         let mainTabBarController = MainTabBarController.instantiate()
-        let navigationController = UINavigationController(rootViewController: mainTabBarController).then {
-            $0.navigationBar.isHidden = true
-        }
+        let navigationController = UINavigationController(rootViewController: mainTabBarController)
         window.rootViewController = navigationController
+        window.makeKeyAndVisible()
     }
 }

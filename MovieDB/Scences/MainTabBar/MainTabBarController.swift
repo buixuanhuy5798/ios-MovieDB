@@ -10,6 +10,11 @@ final class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        config()
+    }
+    
+    private func config() {
+        navigationController?.navigationBar.isHidden = true
     }
     
 }

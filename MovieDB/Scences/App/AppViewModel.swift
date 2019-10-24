@@ -22,7 +22,7 @@ extension AppViewModel: ViewModelType {
     
     func transform(_ input: Input) -> Output {
         let toMain = input.loadTrigger
-            .do(onNext: { _ in
+            .do(onNext: { 
                 self.navigator.toMain()
             })
         return Output(toMain: toMain)
