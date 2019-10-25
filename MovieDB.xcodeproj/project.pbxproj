@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052E0E0F236284CB00F50C51 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E0E0E236284CB00F50C51 /* Constants.swift */; };
+		052E0E112362882500F50C51 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E0E102362882500F50C51 /* UIColor+.swift */; };
 		053BBD7423618FB90045660A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053BBD7323618FB90045660A /* UIViewController+.swift */; };
+		053BBD7623619AE90045660A /* Movie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 053BBD7523619AE90045660A /* Movie.storyboard */; };
+		053BBD7823619B000045660A /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 053BBD7723619B000045660A /* Categories.storyboard */; };
+		053BBD7A23619B0D0045660A /* Favourite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 053BBD7923619B0D0045660A /* Favourite.storyboard */; };
+		053BBD7F23619B980045660A /* MovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053BBD7E23619B980045660A /* MovieController.swift */; };
+		053BBD8123619BB80045660A /* CategoriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053BBD8023619BB80045660A /* CategoriesController.swift */; };
+		053BBD8323619BE10045660A /* FavouriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053BBD8223619BE10045660A /* FavouriteController.swift */; };
 		05745A292361665400FE11EA /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05745A282361665400FE11EA /* Storyboards.swift */; };
 		05745A2E23616B1000FE11EA /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05745A2D23616B1000FE11EA /* MainTabBar.storyboard */; };
 		05745A332361729E00FE11EA /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05745A322361729E00FE11EA /* AppNavigator.swift */; };
@@ -40,7 +48,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		052E0E0E236284CB00F50C51 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		052E0E102362882500F50C51 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		053BBD7323618FB90045660A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		053BBD7523619AE90045660A /* Movie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Movie.storyboard; sourceTree = "<group>"; };
+		053BBD7723619B000045660A /* Categories.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
+		053BBD7923619B0D0045660A /* Favourite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favourite.storyboard; sourceTree = "<group>"; };
+		053BBD7E23619B980045660A /* MovieController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieController.swift; sourceTree = "<group>"; };
+		053BBD8023619BB80045660A /* CategoriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesController.swift; sourceTree = "<group>"; };
+		053BBD8223619BE10045660A /* FavouriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteController.swift; sourceTree = "<group>"; };
 		05745A282361665400FE11EA /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		05745A2C236166FF00FE11EA /* Briding-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Briding-Header.h"; sourceTree = "<group>"; };
 		05745A2D23616B1000FE11EA /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
@@ -95,6 +111,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		052E0E0D236284B600F50C51 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				05B0EE02235FD99C0046D5D4 /* Assets.xcassets */,
+				052E0E0E236284CB00F50C51 /* Constants.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		053BBD7B23619B670045660A /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				053BBD7E23619B980045660A /* MovieController.swift */,
+			);
+			path = Movie;
+			sourceTree = "<group>";
+		};
+		053BBD7C23619B6D0045660A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				053BBD8023619BB80045660A /* CategoriesController.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		053BBD7D23619B740045660A /* Favourite */ = {
+			isa = PBXGroup;
+			children = (
+				053BBD8223619BE10045660A /* FavouriteController.swift */,
+			);
+			path = Favourite;
+			sourceTree = "<group>";
+		};
 		05745A22236165FB00FE11EA /* Utlis */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				053BBD7323618FB90045660A /* UIViewController+.swift */,
+				052E0E102362882500F50C51 /* UIColor+.swift */,
 			);
 			name = Extensions;
 			path = Extension;
@@ -128,6 +178,9 @@
 		05745A262361661D00FE11EA /* Scences */ = {
 			isa = PBXGroup;
 			children = (
+				053BBD7D23619B740045660A /* Favourite */,
+				053BBD7C23619B6D0045660A /* Categories */,
+				053BBD7B23619B670045660A /* Movie */,
 				05745A2B236166AC00FE11EA /* MainTabBar */,
 				05745A2A2361669F00FE11EA /* App */,
 				05745A272361663800FE11EA /* Storyboards */,
@@ -140,6 +193,9 @@
 			children = (
 				05745A282361665400FE11EA /* Storyboards.swift */,
 				05745A2D23616B1000FE11EA /* MainTabBar.storyboard */,
+				053BBD7523619AE90045660A /* Movie.storyboard */,
+				053BBD7723619B000045660A /* Categories.storyboard */,
+				053BBD7923619B0D0045660A /* Favourite.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -187,13 +243,13 @@
 		05B0EDF8235FD9980046D5D4 /* MovieDB */ = {
 			isa = PBXGroup;
 			children = (
+				052E0E0D236284B600F50C51 /* Resource */,
 				05745A262361661D00FE11EA /* Scences */,
 				05745A252361661600FE11EA /* Platform */,
 				05745A242361660D00FE11EA /* Domain */,
 				05745A232361660500FE11EA /* Extensions */,
 				05745A22236165FB00FE11EA /* Utlis */,
 				05B0EDF9235FD9980046D5D4 /* AppDelegate.swift */,
-				05B0EE02235FD99C0046D5D4 /* Assets.xcassets */,
 				05B0EE04235FD99C0046D5D4 /* LaunchScreen.storyboard */,
 				05B0EE07235FD99C0046D5D4 /* Info.plist */,
 			);
@@ -340,9 +396,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				053BBD7823619B000045660A /* Categories.storyboard in Resources */,
 				05745A2E23616B1000FE11EA /* MainTabBar.storyboard in Resources */,
 				05B0EE06235FD99C0046D5D4 /* LaunchScreen.storyboard in Resources */,
 				05B0EE03235FD99C0046D5D4 /* Assets.xcassets in Resources */,
+				053BBD7A23619B0D0045660A /* Favourite.storyboard in Resources */,
+				053BBD7623619AE90045660A /* Movie.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,12 +530,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				053BBD7423618FB90045660A /* UIViewController+.swift in Sources */,
+				052E0E0F236284CB00F50C51 /* Constants.swift in Sources */,
 				05745A292361665400FE11EA /* Storyboards.swift in Sources */,
 				05B0EDFE235FD9980046D5D4 /* MainTabBarController.swift in Sources */,
+				053BBD8123619BB80045660A /* CategoriesController.swift in Sources */,
+				052E0E112362882500F50C51 /* UIColor+.swift in Sources */,
 				05745A35236172F800FE11EA /* AppViewModel.swift in Sources */,
+				053BBD7F23619B980045660A /* MovieController.swift in Sources */,
 				05745A372361730700FE11EA /* AppUseCase.swift in Sources */,
 				05B0EDFA235FD9980046D5D4 /* AppDelegate.swift in Sources */,
 				05745A332361729E00FE11EA /* AppNavigator.swift in Sources */,
+				053BBD8323619BE10045660A /* FavouriteController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
