@@ -8,4 +8,7 @@
 
 struct Storyboards {
     static let mainTabBar = UIStoryboard(name: "MainTabBar", bundle: nil)
+    static let movie = UIStoryboard(name: "Movie", bundle: nil)
+    static let categories = UIStoryboard(name: "Categories", bundle: nil)
+    static let favourite = UIStoryboard(name: "Favourite", bundle: nil)
 }
