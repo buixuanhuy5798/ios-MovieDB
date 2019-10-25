@@ -41,4 +41,5 @@ struct AppNavigator: AppNavigatorType {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
+    
 }
