@@ -7,7 +7,7 @@
 //
 
 @IBDesignable
-class RoundedButton: UIButton {
+final class RoundedButton: UIButton {
 
     /// MARK: - Inspectable
     @IBInspectable var fillColor: UIColor = .white

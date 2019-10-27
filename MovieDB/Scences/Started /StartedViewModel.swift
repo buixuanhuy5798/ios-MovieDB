@@ -6,22 +6,28 @@
 //  Copyright © 2019 huy. All rights reserved.
 //
 
-struct StartedViewModel: ViewModelType {
+struct StartedViewModel {
+    let navigator: StartedNavigatorType
+}
+
+extension StartedViewModel: ViewModelType {
     
     struct Input {
-        let nextTrigger: Driver<Void>
-        let startedTrigger: Driver<Void>
+        let tapNextButton: Driver<Void>
+        let tapStartedButton: Driver<Void>
     }
     
     struct Output {
         let scrollToNextPage: Driver<Void>
-        let dismiss: Driver<Void>
+        let toMainTabBar: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
-        let scrollToNextPage = input.nextTrigger
-        let dismiss = input.startedTrigger
-        return Output(scrollToNextPage: scrollToNextPage,
-                      dismiss: dismiss)
+        let scrollToNextPage = input.tapNextButton
+        let toMainTabBar = input.tapStartedButton
+            .do(onNext: self.navigator.toMainTabBar)
+        return Output(
+            scrollToNextPage: scrollToNextPage,
+            toMainTabBar: toMainTabBar)
     }
 }

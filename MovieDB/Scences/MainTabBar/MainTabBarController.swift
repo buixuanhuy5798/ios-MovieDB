@@ -10,26 +10,14 @@ final class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        config()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        presentStartedView()
+        super.viewWillAppear(animated)
+        configTabBar()
     }
     
-    private func presentStartedView() {
-        if !UserDefaults.standard.bool(forKey: "notFirstLauchApp") {
-            let viewModel = StartedViewModel()
-            let startedController = StartedController.instantiate().then {
-                $0.bindViewModel(to: viewModel)
-                $0.modalPresentationStyle = .fullScreen
-            }
-            self.present(startedController, animated: true, completion: nil)
-            UserDefaults.standard.set(true, forKey: "notFirstLauchApp")
-        }
-    }
-    
-    private func config() {
+    private func configTabBar() {
         self.hideNavigationBar()
     }
     

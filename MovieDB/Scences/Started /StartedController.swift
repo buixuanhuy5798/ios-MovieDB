@@ -17,28 +17,29 @@ final class StartedController: UIViewController, BindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        config()
     }
     
     func bindViewModel() {
-        let input = StartedViewModel.Input(nextTrigger: Driver.merge(nextButton.rx.tap.asDriver(),
-                                                                     secondNextButton.rx.tap.asDriver()),
-                                           startedTrigger: getStartedButton.rx.tap.asDriver())
+        let input = StartedViewModel.Input(
+            tapNextButton: Driver.merge(nextButton.rx.tap.asDriver(),
+                                        secondNextButton.rx.tap.asDriver()),
+            tapStartedButton: getStartedButton.rx.tap.asDriver())
         let output = viewModel.transform(input)
         output.scrollToNextPage
-            .do(onNext: configScroll)
-            .drive()
+            .drive(onNext: configScroll)
             .disposed(by: rx.disposeBag)
-        output.dismiss
-            .do(onNext: {
-                self.dismiss(animated: true, completion: nil)
-            })
+        output.toMainTabBar
             .drive()
             .disposed(by: rx.disposeBag)
     }
     
+    private func config() {
+        self.hideNavigationBar()
+    }
+    
     private func configScroll() {
-        scrollView.contentOffset.x +=
-                           view.witdh
+        scrollView.contentOffset.x += view.witdh
     }
 }
 
