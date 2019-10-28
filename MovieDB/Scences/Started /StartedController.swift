@@ -27,7 +27,10 @@ final class StartedController: UIViewController, BindableType {
             tapStartedButton: getStartedButton.rx.tap.asDriver())
         let output = viewModel.transform(input)
         output.scrollToNextPage
-            .drive(onNext: configScroll)
+            .map {
+                return self.view.witdh
+            }
+            .drive(scrollView.rx.customScrollBinding)
             .disposed(by: rx.disposeBag)
         output.toMainTabBar
             .drive()
@@ -37,12 +40,11 @@ final class StartedController: UIViewController, BindableType {
     private func config() {
         self.hideNavigationBar()
     }
-    
-    private func configScroll() {
-        scrollView.contentOffset.x += view.witdh
-    }
+
 }
 
 extension StartedController: StoryboardSceneBased {
     static var sceneStoryboard = Storyboards.started
 }
+
+

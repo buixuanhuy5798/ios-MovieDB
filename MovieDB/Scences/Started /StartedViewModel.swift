@@ -28,6 +28,7 @@ extension StartedViewModel: ViewModelType {
             .do(onNext: self.navigator.toMainTabBar)
         return Output(
             scrollToNextPage: scrollToNextPage,
-            toMainTabBar: toMainTabBar)
+            toMainTabBar: toMainTabBar
+        )
     }
 }
