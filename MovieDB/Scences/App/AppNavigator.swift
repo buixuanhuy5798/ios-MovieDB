@@ -7,38 +7,29 @@
 //
 
 protocol AppNavigatorType {
-    func toMain()
+    func toMainTabBar()
+    func toStartedScreen()
 }
 
 struct AppNavigator: AppNavigatorType {
     unowned let window: UIWindow
     
-    func toMain() {
-        let mainTabBarController = MainTabBarController.instantiate()
-        let navigationController = UINavigationController(rootViewController: mainTabBarController)
-        let movieController = MovieController.instantiate().then {
-            $0.tabBarItem = UITabBarItem(title: Constants.titleMovieTabBar,
-                                         image: Constants.iconMovie,
-                                         selectedImage: Constants.iconMovieSelected)
-        }
-        let categoriesController = CategoriesController.instantiate().then {
-            $0.tabBarItem = UITabBarItem(title: Constants.titleCategoriesTabBar,
-                                         image: Constants.iconCategories,
-                                         selectedImage: Constants.iconCategoriesSelected)
-        }
-        let favouriteController = FavouriteController.instantiate().then {
-            $0.tabBarItem = UITabBarItem(title: Constants.titleFavouriteTabBar,
-                                         image: Constants.iconFavorite,
-                                         selectedImage: Constants.iconFavouriteSelected)
-        }
-        mainTabBarController.do {
-            $0.viewControllers = [movieController,
-                                  categoriesController,
-                                  favouriteController]
-            $0.tabBar.barStyle = .black
-            $0.tabBar.tintColor = UIColor.tinColorTabBar
-        }
+    func toMainTabBar() {
+        let navigationController = UINavigationController()
+        let mainTabBarNavigator = MainTabBarNavigator(naviagation: navigationController)
+        mainTabBarNavigator.toMainTabBar()
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
+    
+    func toStartedScreen() {
+        let startedController = StartedController.instantiate()
+        let navigationController = UINavigationController(rootViewController: startedController)
+        let startedNavigator = StartedNavigator(navigation: navigationController)
+        let startedViewModel = StartedViewModel(navigator: startedNavigator)
+        startedController.bindViewModel(to: startedViewModel)
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+    }
+    
 }

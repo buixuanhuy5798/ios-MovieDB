@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            let viewModel = AppViewModel(useCase: useCase, navigator: navigator)
            let input = AppViewModel.Input(loadTrigger: Driver.just(()))
            let output = viewModel.transform(input)
-           output.toMain
+           output.toNextScreen
                .drive()
                .disposed(by: rx.disposeBag)
        }

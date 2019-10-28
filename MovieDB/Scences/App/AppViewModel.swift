@@ -17,12 +17,19 @@ extension AppViewModel: ViewModelType {
     }
     
     struct Output {
-        let toMain: Driver<Void>
+        let toNextScreen: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
-        let toMain = input.loadTrigger
-            .do(onNext: self.navigator.toMain)
-        return Output(toMain: toMain)
+        let toNextScreen = input.loadTrigger
+            .do(onNext: {
+                if AppData.firstLaunch {
+                    self.navigator.toStartedScreen()
+                    self.useCase.changeCheckFirstLauch()
+                } else {
+                    self.navigator.toMainTabBar()
+                }
+            })
+        return Output(toNextScreen: toNextScreen)
     }
 }

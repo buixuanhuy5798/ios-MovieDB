@@ -7,7 +7,11 @@
 //
 
 protocol AppUseCaseType {
+    func changeCheckFirstLauch()
 }
 
 struct AppUseCase: AppUseCaseType {
+    func changeCheckFirstLauch() {
+        AppData.firstLaunch = false
+    }
 }

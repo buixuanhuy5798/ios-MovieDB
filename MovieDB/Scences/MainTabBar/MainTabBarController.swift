@@ -7,13 +7,17 @@
 //
 
 final class MainTabBarController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        config()
     }
     
-    private func config() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configTabBar()
+    }
+    
+    private func configTabBar() {
         self.hideNavigationBar()
     }
     
