@@ -48,6 +48,7 @@ playground.xcworkspace
 #
 Pods/
 Podfile.lock
+MovieDB/Resource/Config/APIKey.swift
 
 # Carthage
 #
@@ -67,3 +68,5 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+
+

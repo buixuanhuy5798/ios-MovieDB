@@ -14,5 +14,4 @@ struct AppData {
     
     @Storage(key: Constants.keyCheckFirstLaunch, defaultValue: true)
     static var firstLaunch: Bool
-    
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0512716C23681CCF008E854E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0512716B23681CCF008E854E /* APIService.swift */; };
 		052E0E0F236284CB00F50C51 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E0E0E236284CB00F50C51 /* Constants.swift */; };
 		052E0E112362882500F50C51 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E0E102362882500F50C51 /* UIColor+.swift */; };
 		052E0E14236291DE00F50C51 /* StartedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E0E13236291DE00F50C51 /* StartedController.swift */; };
@@ -35,6 +36,11 @@
 		05B0EE06235FD99C0046D5D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B0EE04235FD99C0046D5D4 /* LaunchScreen.storyboard */; };
 		05C43C92236540D400F95233 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C43C91236540D400F95233 /* AppData.swift */; };
 		05C43CA72366E18D00F95233 /* UIScroll+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C43CA62366E18C00F95233 /* UIScroll+Rx.swift */; };
+		05FA0FE923681E2F00C88333 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FA0FE823681E2F00C88333 /* APIError.swift */; };
+		05FA0FEB23681EE500C88333 /* APIInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FA0FEA23681EE400C88333 /* APIInput.swift */; };
+		05FA0FED23681F5400C88333 /* APIUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FA0FEC23681F5400C88333 /* APIUrls.swift */; };
+		05FA0FEF236820CD00C88333 /* APIOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FA0FEE236820CD00C88333 /* APIOutput.swift */; };
+		05FA0FF12368269400C88333 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FA0FF02368269400C88333 /* APIKey.swift */; };
 		7E96EE2E05076899CC069746 /* Pods_MovieDB_MovieDBUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCC250593A83DE10694DD00B /* Pods_MovieDB_MovieDBUITests.framework */; };
 		C9D8348C063A97B6F6B68926 /* Pods_MovieDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0E59C181942E2AF106EE3B /* Pods_MovieDBTests.framework */; };
 		FDA977FFED022F153279A979 /* Pods_MovieDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6468E91F7C97B1C8D56BEDD6 /* Pods_MovieDB.framework */; };
@@ -58,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0512716B23681CCF008E854E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		052E0E0E236284CB00F50C51 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		052E0E102362882500F50C51 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		052E0E13236291DE00F50C51 /* StartedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartedController.swift; sourceTree = "<group>"; };
@@ -92,6 +99,11 @@
 		05B0EE17235FD99C0046D5D4 /* MovieDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C43C91236540D400F95233 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		05C43CA62366E18C00F95233 /* UIScroll+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScroll+Rx.swift"; sourceTree = "<group>"; };
+		05FA0FE823681E2F00C88333 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		05FA0FEA23681EE400C88333 /* APIInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIInput.swift; sourceTree = "<group>"; };
+		05FA0FEC23681F5400C88333 /* APIUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUrls.swift; sourceTree = "<group>"; };
+		05FA0FEE236820CD00C88333 /* APIOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIOutput.swift; sourceTree = "<group>"; };
+		05FA0FF02368269400C88333 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		18DE268CED7674A530594344 /* Pods-MovieDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB.debug.xcconfig"; path = "Target Support Files/Pods-MovieDB/Pods-MovieDB.debug.xcconfig"; sourceTree = "<group>"; };
 		2F0E59C181942E2AF106EE3B /* Pods_MovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		300C5D34FFA26A65836B7B67 /* Pods-MovieDB-MovieDBUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB-MovieDBUITests.release.xcconfig"; path = "Target Support Files/Pods-MovieDB-MovieDBUITests/Pods-MovieDB-MovieDBUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -131,6 +143,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0512716823681C67008E854E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0512716923681C88008E854E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0512716A23681CBB008E854E /* API */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0512716A23681CBB008E854E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				05FA0FEE236820CD00C88333 /* APIOutput.swift */,
+				05FA0FEA23681EE400C88333 /* APIInput.swift */,
+				0512716B23681CCF008E854E /* APIService.swift */,
+				05FA0FE823681E2F00C88333 /* APIError.swift */,
+				05FA0FEC23681F5400C88333 /* APIUrls.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		052E0E0D236284B600F50C51 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +261,7 @@
 		05745A242361660D00FE11EA /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				0512716823681C67008E854E /* Models */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -229,6 +269,7 @@
 		05745A252361661600FE11EA /* Platform */ = {
 			isa = PBXGroup;
 			children = (
+				0512716923681C88008E854E /* Services */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -338,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				05C43C91236540D400F95233 /* AppData.swift */,
+				05FA0FF02368269400C88333 /* APIKey.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -611,20 +653,26 @@
 				053BBD7423618FB90045660A /* UIViewController+.swift in Sources */,
 				052E0E0F236284CB00F50C51 /* Constants.swift in Sources */,
 				05745A292361665400FE11EA /* Storyboards.swift in Sources */,
+				05FA0FEF236820CD00C88333 /* APIOutput.swift in Sources */,
 				05A9B72F23653F6C008E4D72 /* Storage.swift in Sources */,
+				0512716C23681CCF008E854E /* APIService.swift in Sources */,
 				05B0EDFE235FD9980046D5D4 /* MainTabBarController.swift in Sources */,
+				05FA0FF12368269400C88333 /* APIKey.swift in Sources */,
 				05A9B72C23653DF6008E4D72 /* MainTabBarNavigator.swift in Sources */,
 				052E0E272362B40C00F50C51 /* StartedViewModel.swift in Sources */,
 				053BBD8123619BB80045660A /* CategoriesController.swift in Sources */,
 				052E0E2F2362F9F700F50C51 /* StartedNavgator.swift in Sources */,
 				052E0E112362882500F50C51 /* UIColor+.swift in Sources */,
+				05FA0FE923681E2F00C88333 /* APIError.swift in Sources */,
 				05745A35236172F800FE11EA /* AppViewModel.swift in Sources */,
 				053BBD7F23619B980045660A /* MovieController.swift in Sources */,
 				052E0E14236291DE00F50C51 /* StartedController.swift in Sources */,
 				05C43CA72366E18D00F95233 /* UIScroll+Rx.swift in Sources */,
+				05FA0FED23681F5400C88333 /* APIUrls.swift in Sources */,
 				052E0E252362A82B00F50C51 /* UIView+.swift in Sources */,
 				05745A372361730700FE11EA /* AppUseCase.swift in Sources */,
 				05B0EDFA235FD9980046D5D4 /* AppDelegate.swift in Sources */,
+				05FA0FEB23681EE500C88333 /* APIInput.swift in Sources */,
 				052E0E212362A75C00F50C51 /* RoundedButton.swift in Sources */,
 				05745A332361729E00FE11EA /* AppNavigator.swift in Sources */,
 				053BBD8323619BE10045660A /* FavouriteController.swift in Sources */,
