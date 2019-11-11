@@ -21,7 +21,7 @@ target 'MovieDB' do
     
     # Rx
     pod 'NSObject+Rx', '4.3'
-    pod 'RxDataSources', '3.0'
+    pod 'RxDataSources', '4.0'
     
     # Core Data
     pod 'MagicalRecord'
