@@ -11,15 +11,18 @@ final class TopRatedCell: UICollectionViewCell, NibReusable {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var backdropImage: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        customCell()
-    }
-    
-    func customCell() {
-        backdropImage.setConerRadius(conerRadius: 10)
+    override func layoutSubviews() {
         backdropImage.addGradientBackground(firstColor: .clear,
                                             secondColor: .black)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configViews()
+    }
+    
+    func configViews() {
+        backdropImage.setConerRadius(conerRadius: 10)
     }
     
     func setContentCell(topRated: TopRated) {

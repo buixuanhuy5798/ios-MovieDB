@@ -21,7 +21,9 @@ extension TopRated {
 }
 
 extension TopRated: Mappable {
-    init?(map: Map) { self.init() }
+    init?(map: Map) {
+        self.init()
+    }
     
     mutating func mapping(map: Map) {
         id <- map["id"]

@@ -45,7 +45,6 @@ extension MovieViewModel: ViewModelType {
                         .trackActivity(indicator)
                         .trackError(error)
                         .asDriverOnErrorJustComplete()
-                
                 }
                 .map {
                     return $0.items.prefix(Constants.defaultNumberOfMovie).map {

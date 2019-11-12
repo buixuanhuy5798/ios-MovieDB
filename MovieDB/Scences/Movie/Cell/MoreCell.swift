@@ -12,10 +12,10 @@ final class MoreCell: UICollectionViewCell, NibReusable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        customCell()
+        configViews()
     }
     
-    func customCell() {
+    func configViews() {
         moreImage.setConerRadius(conerRadius: 10)
     }
 }

@@ -62,6 +62,7 @@ extension UIView {
     
     func addGradientBackground(firstColor: UIColor, secondColor: UIColor) {
         clipsToBounds = true
+        self.layer.sublayers?.popLast()
         let gradientLayer = CAGradientLayer().then {
             $0.cornerRadius = 10
             $0.colors = [firstColor.cgColor, secondColor.cgColor]
