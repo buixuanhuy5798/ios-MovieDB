@@ -11,12 +11,12 @@ import ObjectMapper
 struct TopRated {
     var id: Int
     var title: String
-    var backdrop_path: String
+    var backdropPath: String
 }
 
 extension TopRated {
     init() {
-        self.init(id: 0, title: "", backdrop_path: "")
+        self.init(id: 0, title: "", backdropPath: "")
     }
 }
 
@@ -26,6 +26,6 @@ extension TopRated: Mappable {
     mutating func mapping(map: Map) {
         id <- map["id"]
         title <- map["title"]
-        backdrop_path <- map["backdrop_path"]
+        backdropPath <- map["backdrop_path"]
     }
 }

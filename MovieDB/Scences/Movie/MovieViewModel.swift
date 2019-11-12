@@ -31,7 +31,7 @@ extension MovieViewModel: ViewModelType {
     }
     
     struct Output {
-        let cellData: Driver<[SectionOfCustomData]>
+        let topRated: Driver<[SectionOfCustomData]>
         let error: Driver<Error>
         let indicator: Driver<Bool>
     }
@@ -44,25 +44,29 @@ extension MovieViewModel: ViewModelType {
                    return self.useCase.getTopRatedMovie()
                         .trackActivity(indicator)
                         .trackError(error)
-                        .map {
-                            return $0.items.prefix(Constants.defaultNumberOfMovie).map {
-                                return CellType.TopRatedCell(topRated: $0)
-                            }
-                        }
-                        .map {
-                            return SectionOfCustomData(header: "", items: $0)
-                        }
-                       .asDriverOnErrorJustComplete()
-               }
+                        .asDriverOnErrorJustComplete()
+                
+                }
+                .map {
+                    return $0.items.prefix(Constants.defaultNumberOfMovie).map {
+                        return CellType.TopRatedCell(topRated: $0)
+                    }
+                }
+                .map {
+                    return SectionOfCustomData(header: "", items: $0)
+                }
+        
         let loadMoreCell = input.loadTrigger
             .map {
                 return SectionOfCustomData(header: "", items: [CellType.MoreMovieCell])
             }
-        let sections = Driver.combineLatest(topRatedList, loadMoreCell) {
+        
+        let topRatedSections = Driver.combineLatest(topRatedList, loadMoreCell) {
             return [$0, $1]
         }
+        
         return Output(
-            cellData: sections,
+            topRated: topRatedSections,
             error: error.asDriver(),
             indicator: indicator.asDriver()
         )

@@ -38,7 +38,7 @@
 		058F9A7E2378F67B00D7057B /* APITopRated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058F9A7D2378F67B00D7057B /* APITopRated.swift */; };
 		058F9A832379084C00D7057B /* MoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058F9A812379084C00D7057B /* MoreCell.swift */; };
 		058F9A842379084C00D7057B /* MoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 058F9A822379084C00D7057B /* MoreCell.xib */; };
-		058F9A8823792F5400D7057B /* UICollectionViewFlowLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058F9A8723792F5400D7057B /* UICollectionViewFlowLayout+.swift */; };
+		058F9A8A237A85F800D7057B /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058F9A89237A85F800D7057B /* CollectionViewLayout.swift */; };
 		05A9B72C23653DF6008E4D72 /* MainTabBarNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A9B72B23653DF6008E4D72 /* MainTabBarNavigator.swift */; };
 		05A9B72F23653F6C008E4D72 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A9B72E23653F6C008E4D72 /* Storage.swift */; };
 		05B0EDFA235FD9980046D5D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B0EDF9235FD9980046D5D4 /* AppDelegate.swift */; };
@@ -107,7 +107,7 @@
 		058F9A7D2378F67B00D7057B /* APITopRated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITopRated.swift; sourceTree = "<group>"; };
 		058F9A812379084C00D7057B /* MoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCell.swift; sourceTree = "<group>"; };
 		058F9A822379084C00D7057B /* MoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreCell.xib; sourceTree = "<group>"; };
-		058F9A8723792F5400D7057B /* UICollectionViewFlowLayout+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+.swift"; sourceTree = "<group>"; };
+		058F9A89237A85F800D7057B /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
 		05A9B72B23653DF6008E4D72 /* MainTabBarNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarNavigator.swift; sourceTree = "<group>"; };
 		05A9B72E23653F6C008E4D72 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		05B0EDF6235FD9980046D5D4 /* MovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -273,7 +273,6 @@
 				053BBD7323618FB90045660A /* UIViewController+.swift */,
 				052E0E102362882500F50C51 /* UIColor+.swift */,
 				05C43CA62366E18C00F95233 /* UIScroll+Rx.swift */,
-				058F9A8723792F5400D7057B /* UICollectionViewFlowLayout+.swift */,
 			);
 			name = Extensions;
 			path = Extension;
@@ -357,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				058F9A722378F30F00D7057B /* TopRated.swift */,
+				058F9A89237A85F800D7057B /* CollectionViewLayout.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -707,6 +707,7 @@
 				052E0E0F236284CB00F50C51 /* Constants.swift in Sources */,
 				05745A292361665400FE11EA /* Storyboards.swift in Sources */,
 				05FA0FEF236820CD00C88333 /* APIOutput.swift in Sources */,
+				058F9A8A237A85F800D7057B /* CollectionViewLayout.swift in Sources */,
 				05A9B72F23653F6C008E4D72 /* Storage.swift in Sources */,
 				0512716C23681CCF008E854E /* APIService.swift in Sources */,
 				05B0EDFE235FD9980046D5D4 /* MainTabBarController.swift in Sources */,
@@ -727,7 +728,6 @@
 				052E0E14236291DE00F50C51 /* StartedController.swift in Sources */,
 				05C43CA72366E18D00F95233 /* UIScroll+Rx.swift in Sources */,
 				058F9A792378F5C600D7057B /* MovieUseCase.swift in Sources */,
-				058F9A8823792F5400D7057B /* UICollectionViewFlowLayout+.swift in Sources */,
 				05FA0FED23681F5400C88333 /* APIUrls.swift in Sources */,
 				052E0E252362A82B00F50C51 /* UIView+.swift in Sources */,
 				05745A372361730700FE11EA /* AppUseCase.swift in Sources */,

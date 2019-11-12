@@ -9,7 +9,7 @@
 final class MoreCell: UICollectionViewCell, NibReusable {
 
     @IBOutlet private weak var moreImage: UIImageView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         customCell()

@@ -41,9 +41,12 @@
                                                         <state key="normal" image="icon_search"/>
                                                     </button>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KqZ-yi-h6v">
-                                                        <rect key="frame" x="0.0" y="45.5" width="414" height="224.5"/>
+                                                        <rect key="frame" x="0.0" y="45.5" width="414" height="180"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NdX-W3-PKr">
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="180" id="Pnn-8q-BfN"/>
+                                                        </constraints>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NdX-W3-PKr">
                                                             <size key="itemSize" width="50" height="50"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -67,7 +70,6 @@
                                                     <constraint firstItem="cfq-04-oud" firstAttribute="leading" secondItem="HJh-na-bEE" secondAttribute="leading" constant="17" id="7Xw-FN-dZA"/>
                                                     <constraint firstItem="cfq-04-oud" firstAttribute="top" secondItem="HJh-na-bEE" secondAttribute="top" constant="5" id="JHc-cP-9gf"/>
                                                     <constraint firstItem="CfF-hP-zlW" firstAttribute="centerY" secondItem="cfq-04-oud" secondAttribute="centerY" id="Mlc-7B-CTY"/>
-                                                    <constraint firstAttribute="bottom" secondItem="KqZ-yi-h6v" secondAttribute="bottom" id="Njn-ze-qVd"/>
                                                     <constraint firstAttribute="trailing" secondItem="CfF-hP-zlW" secondAttribute="trailing" constant="17" id="OKx-hS-qYb"/>
                                                     <constraint firstItem="KqZ-yi-h6v" firstAttribute="leading" secondItem="HJh-na-bEE" secondAttribute="leading" id="W6g-Jv-SK9"/>
                                                     <constraint firstItem="KqZ-yi-h6v" firstAttribute="top" secondItem="cfq-04-oud" secondAttribute="bottom" constant="13" id="Wpq-YA-3DV"/>

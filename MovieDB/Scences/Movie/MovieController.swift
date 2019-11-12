@@ -13,6 +13,7 @@ final class MovieController: UIViewController, BindableType {
     
     // MARK: - Variables
     var viewModel: MovieViewModel!
+    private var topRatedLayout = CollectionViewLayout(itemSpacing: 7, itemsPerRow: 1.5)
     
     // MARK: - View Life Cycles
     override func viewDidLoad() {
@@ -22,18 +23,13 @@ final class MovieController: UIViewController, BindableType {
     
     // MARK - Support Modethods
     private func config() {
-         let layout = UICollectionViewFlowLayout().then {
-             $0.minimumInteritemSpacing = 5
-             $0.sectionInset = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 7)
-             let itemHeight = topRatedCollectionView.height
-             let itemRow = CGFloat(1.5)
-             let itemWidth = $0.estimateWitdhOfCell(itemRow: itemRow)
-             $0.itemSize = CGSize(width: itemWidth, height: itemHeight)
-             $0.scrollDirection = .horizontal
-         }
-         topRatedCollectionView.register(cellType: TopRatedCell.self)
-         topRatedCollectionView.register(cellType: MoreCell.self)
-         topRatedCollectionView.collectionViewLayout = layout
+        topRatedCollectionView.do {
+            $0.register(cellType: TopRatedCell.self)
+            $0.register(cellType: MoreCell.self)
+            $0.rx
+                .setDelegate(self)
+                .disposed(by: rx.disposeBag)
+        }
     }
     
     func bindViewModel() {
@@ -42,7 +38,7 @@ final class MovieController: UIViewController, BindableType {
             loadTrigger: Driver.just(())
         )
         let output = viewModel.transform(input)
-        output.cellData
+        output.topRated
             .map {
                 $0.map {
                     SectionModel(model: $0.header, items: $0.items)
@@ -57,7 +53,6 @@ final class MovieController: UIViewController, BindableType {
             .drive(rx.error)
             .disposed(by: rx.disposeBag)
     }
-    
 }
 
 extension MovieController: StoryboardSceneBased {
@@ -78,5 +73,35 @@ extension MovieController {
                 return cell
             }
         }, configureSupplementaryView: {_, _, _, _  in return UICollectionReusableView()})
+    }
+}
+
+extension MovieController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == topRatedCollectionView {
+            let itemHeight = collectionView.height
+            let itemWitdh = topRatedLayout.estimateWitdhPerItems()
+            return CGSize(width: itemWitdh, height: itemHeight)
+        } else {
+            return CGSize()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if collectionView == topRatedCollectionView {
+            return topRatedLayout.sectionInset
+        } else {
+            return UIEdgeInsets()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+         if collectionView == topRatedCollectionView {
+             return topRatedLayout.itemsSpacing
+         } else {
+             return CGFloat()
+        }
     }
 }
