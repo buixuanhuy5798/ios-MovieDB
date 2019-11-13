@@ -19,6 +19,7 @@ extension MovieViewModel: ViewModelType {
     enum CellType {
         case MoreMovieCell
         case TopRatedCell(topRated: TopRated)
+        case NowPlayingCell(nowPlaying: NowPlaying)
     }
     
     struct SectionOfCustomData {
@@ -32,6 +33,7 @@ extension MovieViewModel: ViewModelType {
     
     struct Output {
         let topRated: Driver<[SectionOfCustomData]>
+        let nowPlaying: Driver<[SectionOfCustomData]>
         let error: Driver<Error>
         let indicator: Driver<Bool>
     }
@@ -42,8 +44,8 @@ extension MovieViewModel: ViewModelType {
         let topRatedList = input.loadTrigger
                .flatMapLatest { _ in
                    return self.useCase.getTopRatedMovie()
-                        .trackActivity(indicator)
                         .trackError(error)
+                        .trackActivity(indicator)
                         .asDriverOnErrorJustComplete()
                 }
                 .map {
@@ -55,6 +57,22 @@ extension MovieViewModel: ViewModelType {
                     return SectionOfCustomData(header: "", items: $0)
                 }
         
+        let nowPlayingList = input.loadTrigger
+            .flatMapLatest { _ in
+                return self.useCase.getNowPlaying()
+                    .trackError(error)
+                    .trackActivity(indicator)
+                    .asDriverOnErrorJustComplete()
+            }
+            .map {
+                return $0.items.prefix(Constants.defaultNumberOfMovie).map {
+                    return CellType.NowPlayingCell(nowPlaying: $0)
+                }
+            }
+            .map {
+                return SectionOfCustomData(header: "", items: $0)
+            }
+        
         let loadMoreCell = input.loadTrigger
             .map {
                 return SectionOfCustomData(header: "", items: [CellType.MoreMovieCell])
@@ -64,8 +82,13 @@ extension MovieViewModel: ViewModelType {
             return [$0, $1]
         }
         
+        let nowPlayingSections = Driver.combineLatest(nowPlayingList, loadMoreCell) {
+            return [$0, $1]
+        }
+          
         return Output(
             topRated: topRatedSections,
+            nowPlaying: nowPlayingSections,
             error: error.asDriver(),
             indicator: indicator.asDriver()
         )

@@ -10,10 +10,12 @@ final class MovieController: UIViewController, BindableType {
     
     // MARK: - Outlets
     @IBOutlet private weak var topRatedCollectionView: UICollectionView!
+    @IBOutlet private weak var nowPlayingCollectionView: UICollectionView!
     
     // MARK: - Variables
     var viewModel: MovieViewModel!
-    private var topRatedLayout = CollectionViewLayout(itemSpacing: 7, itemsPerRow: 1.5)
+    private var topRatedLayoutInfo = CollectionViewLayout(itemSpacing: 7, itemsPerRow: 1.5)
+    private var nowPlayingLayoutInfo = CollectionViewLayout(itemSpacing: 7, itemsPerRow: 2.2)
     
     // MARK: - View Life Cycles
     override func viewDidLoad() {
@@ -21,19 +23,41 @@ final class MovieController: UIViewController, BindableType {
         config()
     }
     
-    // MARK - Support Modethods
+    // MARK: - Support Modethods
     private func config() {
+        let topRateLayout = UICollectionViewFlowLayout().then {
+            let itemHeight = topRatedCollectionView.height
+            let itemWidth = topRatedLayoutInfo.estimateWitdhPerItems()
+            $0.minimumInteritemSpacing = topRatedLayoutInfo.itemsSpacing
+            $0.itemSize = CGSize(width: itemWidth, height: itemHeight)
+            $0.sectionInset = topRatedLayoutInfo.sectionInset
+            $0.scrollDirection = .horizontal
+        }
+        let nowPlayingLayout = UICollectionViewFlowLayout().then {
+            let itemHeight = nowPlayingCollectionView.height
+            let itemWidth = nowPlayingLayoutInfo.estimateWitdhPerItems()
+            $0.itemSize = CGSize(width: itemWidth, height: itemHeight)
+            $0.minimumInteritemSpacing = nowPlayingLayoutInfo.itemsSpacing
+            $0.sectionInset = nowPlayingLayoutInfo.sectionInset
+            $0.scrollDirection = .horizontal
+        }
         topRatedCollectionView.do {
             $0.register(cellType: TopRatedCell.self)
             $0.register(cellType: MoreCell.self)
-            $0.rx
-                .setDelegate(self)
-                .disposed(by: rx.disposeBag)
+            $0.register(cellType: NowPlayingCell.self)
+            $0.collectionViewLayout = topRateLayout
+        }
+        nowPlayingCollectionView.do {
+            $0.register(cellType: NowPlayingCell.self)
+            $0.register(cellType: MoreCell.self)
+            $0.register(cellType: TopRatedCell.self)
+            $0.collectionViewLayout = nowPlayingLayout
         }
     }
     
     func bindViewModel() {
-        let dataSource =  self.datasource()
+        let topRatedDatasource =  datasource()
+        let nowPlayingDatasource = datasource()
         let input = MovieViewModel.Input(
             loadTrigger: Driver.just(())
         )
@@ -44,7 +68,15 @@ final class MovieController: UIViewController, BindableType {
                     SectionModel(model: $0.header, items: $0.items)
                 }
             }
-        .drive(topRatedCollectionView.rx.items(dataSource: dataSource))
+        .drive(topRatedCollectionView.rx.items(dataSource: topRatedDatasource))
+        .disposed(by: rx.disposeBag)
+        output.nowPlaying
+            .map {
+                $0.map {
+                    SectionModel(model: $0.header, items: $0.items)
+                }
+            }
+        .drive(nowPlayingCollectionView.rx.items(dataSource: nowPlayingDatasource))
         .disposed(by: rx.disposeBag)
         output.indicator
             .drive(rx.isLoading)
@@ -66,42 +98,15 @@ extension MovieController {
             case .MoreMovieCell:
                 let cell: MoreCell = collectionView.dequeueReusableCell(for: indexPath)
                 return cell
-                
             case .TopRatedCell(let topRated):
                 let cell: TopRatedCell = collectionView.dequeueReusableCell(for: indexPath)
                 cell.setContentCell(topRated: topRated)
                 return cell
+            case .NowPlayingCell(let nowPlaying):
+                let cell: NowPlayingCell = collectionView.dequeueReusableCell(for: indexPath)
+                cell.setContentCell(nowPlaying: nowPlaying)
+                return cell
             }
         }, configureSupplementaryView: {_, _, _, _  in return UICollectionReusableView()})
-    }
-}
-
-extension MovieController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == topRatedCollectionView {
-            let itemHeight = collectionView.height
-            let itemWitdh = topRatedLayout.estimateWitdhPerItems()
-            return CGSize(width: itemWitdh, height: itemHeight)
-        } else {
-            return CGSize()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if collectionView == topRatedCollectionView {
-            return topRatedLayout.sectionInset
-        } else {
-            return UIEdgeInsets()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-         if collectionView == topRatedCollectionView {
-             return topRatedLayout.itemsSpacing
-         } else {
-             return CGFloat()
-        }
     }
 }

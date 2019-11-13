@@ -9,6 +9,8 @@
 protocol MovieUseCaseType {
     func loadMoreRatedMovie(page: Int) -> Observable<PagingInfo<TopRated>>
     func getTopRatedMovie() -> Observable<PagingInfo<TopRated>>
+    func loadMoreNowPlaying(page: Int) -> Observable<PagingInfo<NowPlaying>>
+    func getNowPlaying() -> Observable<PagingInfo<NowPlaying>>
 }
 
 struct MovieUseCase: MovieUseCaseType {
@@ -20,5 +22,12 @@ struct MovieUseCase: MovieUseCaseType {
     func loadMoreRatedMovie(page: Int) -> Observable<PagingInfo<TopRated>> {
         return MovieRepository.shared.getTopRatedMovie(page: page)
     }
-
+    
+    func getNowPlaying() -> Observable<PagingInfo<NowPlaying>> {
+        return loadMoreNowPlaying(page: 1)
+    }
+    
+    func loadMoreNowPlaying(page: Int) -> Observable<PagingInfo<NowPlaying>> {
+        return MovieRepository.shared.getNowPlaying(page: page)
+    }
 }

@@ -18,13 +18,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moreBackground" translatesAutoresizingMaskIntoConstraints="NO" id="AF3-WS-CGJ">
-                        <rect key="frame" x="12" y="0.0" width="313" height="165"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="165" id="hbh-Uf-3Bq"/>
-                        </constraints>
+                        <rect key="frame" x="0.0" y="0.0" width="332" height="132"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MORE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYd-Ge-KAs">
-                        <rect key="frame" x="137" y="66.5" width="63" height="32"/>
+                        <rect key="frame" x="134.5" y="50" width="63" height="32"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="27"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -32,10 +29,11 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="AF3-WS-CGJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="ICA-e2-YS3"/>
+                <constraint firstItem="AF3-WS-CGJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ICA-e2-YS3"/>
                 <constraint firstItem="AF3-WS-CGJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ML4-dO-qDd"/>
                 <constraint firstItem="aYd-Ge-KAs" firstAttribute="centerY" secondItem="AF3-WS-CGJ" secondAttribute="centerY" id="PIp-DV-nZA"/>
-                <constraint firstAttribute="trailing" secondItem="AF3-WS-CGJ" secondAttribute="trailing" constant="7" id="X4m-pJ-2cn"/>
+                <constraint firstAttribute="bottom" secondItem="AF3-WS-CGJ" secondAttribute="bottom" constant="33" id="Whj-Od-tWM"/>
+                <constraint firstAttribute="trailing" secondItem="AF3-WS-CGJ" secondAttribute="trailing" id="X4m-pJ-2cn"/>
                 <constraint firstItem="aYd-Ge-KAs" firstAttribute="centerX" secondItem="AF3-WS-CGJ" secondAttribute="centerX" id="s2h-nr-Uh6"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
