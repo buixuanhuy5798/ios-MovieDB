@@ -20,6 +20,10 @@ struct MainTabBarNavigator: MainTabBarNavigatorType {
                                          image: Constants.iconMovie,
                                          selectedImage: Constants.iconMovieSelected)
         }
+        let movieNavigator = MovieNavigator()
+        let movieUseCase = MovieUseCase()
+        let movieViewModel = MovieViewModel(navigator: movieNavigator, useCase: movieUseCase)
+        movieController.bindViewModel(to: movieViewModel)
         let categoriesController = CategoriesController.instantiate().then {
             $0.tabBarItem = UITabBarItem(title: Constants.titleCategoriesTabBar,
                                          image: Constants.iconCategories,

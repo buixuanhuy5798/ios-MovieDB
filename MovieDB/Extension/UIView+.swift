@@ -55,4 +55,23 @@ extension UIView {
         roundedPath.close()
     }
     
+    func setConerRadius(conerRadius: CGFloat) {
+        self.layer.cornerRadius = conerRadius
+        self.clipsToBounds = true
+    }
+    
+    func addGradientBackground(firstColor: UIColor, secondColor: UIColor) {
+        clipsToBounds = true
+        self.layer.sublayers?.popLast()
+        let gradientLayer = CAGradientLayer().then {
+            $0.cornerRadius = 10
+            $0.colors = [firstColor.cgColor, secondColor.cgColor]
+            $0.locations = [0.7, 1.1]
+            $0.frame = self.bounds
+            $0.startPoint = CGPoint(x: 0, y: 0)
+            $0.endPoint = CGPoint(x: 0, y: 1)
+        }
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
 }
