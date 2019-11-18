@@ -42,20 +42,20 @@ extension MovieViewModel: ViewModelType {
         let indicator = ActivityIndicator()
         let error = ErrorTracker()
         let topRatedList = input.loadTrigger
-               .flatMapLatest { _ in
-                   return self.useCase.getTopRatedMovie()
-                        .trackError(error)
-                        .trackActivity(indicator)
-                        .asDriverOnErrorJustComplete()
-                }
-                .map {
-                    return $0.items.prefix(Constants.defaultNumberOfMovie).map {
-                        return CellType.TopRatedCell(topRated: $0)
-                    }
-                }
-                .map {
-                    return SectionOfCustomData(header: "", items: $0)
-                }
+           .flatMapLatest { _ in
+               return self.useCase.getTopRatedMovie()
+                    .trackError(error)
+                    .trackActivity(indicator)
+                    .asDriverOnErrorJustComplete()
+            }
+            .map {
+                SectionOfCustomData(header: "",
+                                    items: $0.items.prefix(Constants.defaultNumberOfMovie)
+                                        .map {
+                                            CellType.TopRatedCell(topRated: $0)
+                                        }
+                                    )
+            }
         
         let nowPlayingList = input.loadTrigger
             .flatMapLatest { _ in
@@ -65,14 +65,14 @@ extension MovieViewModel: ViewModelType {
                     .asDriverOnErrorJustComplete()
             }
             .map {
-                return $0.items.prefix(Constants.defaultNumberOfMovie).map {
-                    return CellType.NowPlayingCell(nowPlaying: $0)
-                }
+                SectionOfCustomData(header: "",
+                                    items: $0.items.prefix(Constants.defaultNumberOfMovie)
+                                        .map {
+                                            CellType.NowPlayingCell(nowPlaying: $0)
+                                        }
+                                    )
             }
-            .map {
-                return SectionOfCustomData(header: "", items: $0)
-            }
-        
+ 
         let loadMoreCell = input.loadTrigger
             .map {
                 return SectionOfCustomData(header: "", items: [CellType.MoreMovieCell])

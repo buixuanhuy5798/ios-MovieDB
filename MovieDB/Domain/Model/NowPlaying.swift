@@ -13,7 +13,7 @@ struct NowPlaying {
     var title: String
     var posterPath: String
     var backdropPath: String
-    var releaseDate: String
+    var releaseDate: Date
 }
 
 extension NowPlaying {
@@ -22,7 +22,7 @@ extension NowPlaying {
                   title: "",
                   posterPath: "",
                   backdropPath: "",
-                  releaseDate: "")
+                  releaseDate: Date())
     }
 }
 

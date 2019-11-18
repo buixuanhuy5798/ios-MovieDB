@@ -21,9 +21,9 @@ extension API {
                 "page": page
             ]
             super.init(urlString: API.APIUrl.nowPlayingUrl,
-                              parameters: param,
-                              requestType: .get,
-                              requireAccessToken: false)
+                       parameters: param,
+                       requestType: .get,
+                       requireAccessToken: false)
         }
     }
     

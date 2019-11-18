@@ -24,35 +24,27 @@ final class MovieController: UIViewController, BindableType {
     }
     
     // MARK: - Support Modethods
+    private func configFlowLayout(_ collectionView: UICollectionView,
+                                  _ collectionViewLayoutInfo: CollectionViewLayout) {
+        let layout = UICollectionViewFlowLayout().then {
+            let itemHeight = collectionView.height
+            let itemWitdh = collectionViewLayoutInfo.estimateWitdhPerItems()
+            $0.itemSize = CGSize(width: itemWitdh, height: itemHeight)
+            $0.minimumLineSpacing = collectionViewLayoutInfo.itemsSpacing
+            $0.sectionInset = collectionViewLayoutInfo.sectionInset
+            $0.scrollDirection = .horizontal
+        }
+        collectionView.collectionViewLayout = layout
+    }
+    
     private func config() {
-        let topRateLayout = UICollectionViewFlowLayout().then {
-            let itemHeight = topRatedCollectionView.height
-            let itemWidth = topRatedLayoutInfo.estimateWitdhPerItems()
-            $0.minimumInteritemSpacing = topRatedLayoutInfo.itemsSpacing
-            $0.itemSize = CGSize(width: itemWidth, height: itemHeight)
-            $0.sectionInset = topRatedLayoutInfo.sectionInset
-            $0.scrollDirection = .horizontal
+        [topRatedCollectionView, nowPlayingCollectionView].forEach {
+            $0?.register(cellType: TopRatedCell.self)
+            $0?.register(cellType: MoreCell.self)
+            $0?.register(cellType: NowPlayingCell.self)
         }
-        let nowPlayingLayout = UICollectionViewFlowLayout().then {
-            let itemHeight = nowPlayingCollectionView.height
-            let itemWidth = nowPlayingLayoutInfo.estimateWitdhPerItems()
-            $0.itemSize = CGSize(width: itemWidth, height: itemHeight)
-            $0.minimumInteritemSpacing = nowPlayingLayoutInfo.itemsSpacing
-            $0.sectionInset = nowPlayingLayoutInfo.sectionInset
-            $0.scrollDirection = .horizontal
-        }
-        topRatedCollectionView.do {
-            $0.register(cellType: TopRatedCell.self)
-            $0.register(cellType: MoreCell.self)
-            $0.register(cellType: NowPlayingCell.self)
-            $0.collectionViewLayout = topRateLayout
-        }
-        nowPlayingCollectionView.do {
-            $0.register(cellType: NowPlayingCell.self)
-            $0.register(cellType: MoreCell.self)
-            $0.register(cellType: TopRatedCell.self)
-            $0.collectionViewLayout = nowPlayingLayout
-        }
+        configFlowLayout(topRatedCollectionView, topRatedLayoutInfo)
+        configFlowLayout(nowPlayingCollectionView, nowPlayingLayoutInfo)
     }
     
     func bindViewModel() {
@@ -68,16 +60,16 @@ final class MovieController: UIViewController, BindableType {
                     SectionModel(model: $0.header, items: $0.items)
                 }
             }
-        .drive(topRatedCollectionView.rx.items(dataSource: topRatedDatasource))
-        .disposed(by: rx.disposeBag)
+            .drive(topRatedCollectionView.rx.items(dataSource: topRatedDatasource))
+            .disposed(by: rx.disposeBag)
         output.nowPlaying
             .map {
                 $0.map {
                     SectionModel(model: $0.header, items: $0.items)
                 }
             }
-        .drive(nowPlayingCollectionView.rx.items(dataSource: nowPlayingDatasource))
-        .disposed(by: rx.disposeBag)
+            .drive(nowPlayingCollectionView.rx.items(dataSource: nowPlayingDatasource))
+            .disposed(by: rx.disposeBag)
         output.indicator
             .drive(rx.isLoading)
             .disposed(by: rx.disposeBag)
@@ -110,3 +102,5 @@ extension MovieController {
         }, configureSupplementaryView: {_, _, _, _  in return UICollectionReusableView()})
     }
 }
+
+

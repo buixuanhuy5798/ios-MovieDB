@@ -14,13 +14,15 @@ protocol MovieUseCaseType {
 }
 
 struct MovieUseCase: MovieUseCaseType {
+    
+    let repository = MovieRepository.shared
 
     func getTopRatedMovie() -> Observable<PagingInfo<TopRated>> {
         return loadMoreRatedMovie(page: 1)
     }
 
     func loadMoreRatedMovie(page: Int) -> Observable<PagingInfo<TopRated>> {
-        return MovieRepository.shared.getTopRatedMovie(page: page)
+        return repository.getTopRatedMovie(page: page)
     }
     
     func getNowPlaying() -> Observable<PagingInfo<NowPlaying>> {
@@ -28,6 +30,6 @@ struct MovieUseCase: MovieUseCaseType {
     }
     
     func loadMoreNowPlaying(page: Int) -> Observable<PagingInfo<NowPlaying>> {
-        return MovieRepository.shared.getNowPlaying(page: page)
+        return repository.getNowPlaying(page: page)
     }
 }
