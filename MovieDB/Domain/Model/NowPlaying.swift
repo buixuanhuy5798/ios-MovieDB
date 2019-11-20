@@ -13,7 +13,10 @@ struct NowPlaying {
     var title: String
     var posterPath: String
     var backdropPath: String
-    var releaseDate: Date
+    var releaseDate: Date?
+    var urlImage: String {
+        return API.APIUrl.backdropUrl + posterPath
+    }
 }
 
 extension NowPlaying {

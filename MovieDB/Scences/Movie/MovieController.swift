@@ -55,19 +55,9 @@ final class MovieController: UIViewController, BindableType {
         )
         let output = viewModel.transform(input)
         output.topRated
-            .map {
-                $0.map {
-                    SectionModel(model: $0.header, items: $0.items)
-                }
-            }
             .drive(topRatedCollectionView.rx.items(dataSource: topRatedDatasource))
             .disposed(by: rx.disposeBag)
         output.nowPlaying
-            .map {
-                $0.map {
-                    SectionModel(model: $0.header, items: $0.items)
-                }
-            }
             .drive(nowPlayingCollectionView.rx.items(dataSource: nowPlayingDatasource))
             .disposed(by: rx.disposeBag)
         output.indicator
@@ -84,17 +74,17 @@ extension MovieController: StoryboardSceneBased {
 }
 
 extension MovieController {
-    func datasource() -> RxCollectionViewSectionedReloadDataSource<SectionModel<String, MovieViewModel.CellType>> {
-        return RxCollectionViewSectionedReloadDataSource<SectionModel<String, MovieViewModel.CellType>>(configureCell: { dataSource, collectionView, indexPath, item in
+    func datasource() -> RxCollectionViewSectionedReloadDataSource<SectionModel<String, DataMovie>> {
+        return RxCollectionViewSectionedReloadDataSource<SectionModel<String, DataMovie>>(configureCell: { dataSource, collectionView, indexPath, item in
             switch item {
-            case .MoreMovieCell:
+            case .more:
                 let cell: MoreCell = collectionView.dequeueReusableCell(for: indexPath)
                 return cell
-            case .TopRatedCell(let topRated):
+            case .topRated(let topRated):
                 let cell: TopRatedCell = collectionView.dequeueReusableCell(for: indexPath)
                 cell.setContentCell(topRated: topRated)
                 return cell
-            case .NowPlayingCell(let nowPlaying):
+            case .nowPlaying(let nowPlaying):
                 let cell: NowPlayingCell = collectionView.dequeueReusableCell(for: indexPath)
                 cell.setContentCell(nowPlaying: nowPlaying)
                 return cell

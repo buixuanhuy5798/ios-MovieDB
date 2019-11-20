@@ -22,6 +22,6 @@ final class NowPlayingCell: UICollectionViewCell, NibReusable {
     
     func setContentCell(nowPlaying: NowPlaying) {
         titleLabel.text = nowPlaying.title
-        posterImageView.sd_setImage(with: URL(string: API.APIUrl.backdropUrl + nowPlaying.posterPath))
+        posterImageView.sd_setImage(with: URL(string: nowPlaying.urlImage))
     }
 }

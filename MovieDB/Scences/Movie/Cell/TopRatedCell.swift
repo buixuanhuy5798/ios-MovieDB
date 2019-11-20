@@ -27,7 +27,7 @@ final class TopRatedCell: UICollectionViewCell, NibReusable {
     
     func setContentCell(topRated: TopRated) {
         titleLabel.text = topRated.title
-        backdropImage.sd_setImage(with: URL(string: API.APIUrl.backdropUrl + topRated.backdropPath))
+        backdropImage.sd_setImage(with: URL(string: topRated.urlImage))
     }
 
 }

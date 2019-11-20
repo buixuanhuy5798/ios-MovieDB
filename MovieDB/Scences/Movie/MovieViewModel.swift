@@ -6,6 +6,14 @@
 //  Copyright © 2019 huy. All rights reserved.
 //
 
+typealias DataMovieSection = SectionModel<String, DataMovie>
+
+enum DataMovie {
+    case topRated(topRated: TopRated)
+    case nowPlaying(nowPlaying: NowPlaying)
+    case more
+}
+
 struct MovieViewModel {
     let navigator: MovieNavigatorType
     let useCase: MovieUseCaseType
@@ -15,25 +23,14 @@ extension MovieViewModel: ViewModelType {
     struct Constants {
         static let defaultNumberOfMovie = 7
     }
-    
-    enum CellType {
-        case MoreMovieCell
-        case TopRatedCell(topRated: TopRated)
-        case NowPlayingCell(nowPlaying: NowPlaying)
-    }
-    
-    struct SectionOfCustomData {
-        var header: String
-        var items: [CellType]
-    }
-    
+
     struct Input {
         let loadTrigger: Driver<Void>
     }
     
     struct Output {
-        let topRated: Driver<[SectionOfCustomData]>
-        let nowPlaying: Driver<[SectionOfCustomData]>
+        let topRated: Driver<[DataMovieSection]>
+        let nowPlaying: Driver<[DataMovieSection]>
         let error: Driver<Error>
         let indicator: Driver<Bool>
     }
@@ -49,13 +46,9 @@ extension MovieViewModel: ViewModelType {
                     .asDriverOnErrorJustComplete()
             }
             .map {
-                SectionOfCustomData(header: "",
-                                    items: $0.items.prefix(Constants.defaultNumberOfMovie)
-                                        .map {
-                                            CellType.TopRatedCell(topRated: $0)
-                                        }
-                                    )
+                self.useCase.mapTopRatedItem($0.items, Constants.defaultNumberOfMovie)
             }
+        
         
         let nowPlayingList = input.loadTrigger
             .flatMapLatest { _ in
@@ -65,30 +58,13 @@ extension MovieViewModel: ViewModelType {
                     .asDriverOnErrorJustComplete()
             }
             .map {
-                SectionOfCustomData(header: "",
-                                    items: $0.items.prefix(Constants.defaultNumberOfMovie)
-                                        .map {
-                                            CellType.NowPlayingCell(nowPlaying: $0)
-                                        }
-                                    )
+                self.useCase.mapNowplayingItem($0.items,
+                                               Constants.defaultNumberOfMovie)
             }
  
-        let loadMoreCell = input.loadTrigger
-            .map {
-                return SectionOfCustomData(header: "", items: [CellType.MoreMovieCell])
-            }
-        
-        let topRatedSections = Driver.combineLatest(topRatedList, loadMoreCell) {
-            return [$0, $1]
-        }
-        
-        let nowPlayingSections = Driver.combineLatest(nowPlayingList, loadMoreCell) {
-            return [$0, $1]
-        }
-          
         return Output(
-            topRated: topRatedSections,
-            nowPlaying: nowPlayingSections,
+            topRated: topRatedList,
+            nowPlaying: nowPlayingList,
             error: error.asDriver(),
             indicator: indicator.asDriver()
         )
