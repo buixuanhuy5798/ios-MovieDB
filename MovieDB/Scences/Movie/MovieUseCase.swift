@@ -9,16 +9,48 @@
 protocol MovieUseCaseType {
     func loadMoreRatedMovie(page: Int) -> Observable<PagingInfo<TopRated>>
     func getTopRatedMovie() -> Observable<PagingInfo<TopRated>>
+    func loadMoreNowPlaying(page: Int) -> Observable<PagingInfo<NowPlaying>>
+    func getNowPlaying() -> Observable<PagingInfo<NowPlaying>>
+    func mapNowplayingItem(_ nowPlaying: [NowPlaying], _ numberOfItems: Int) -> [DataMovieSection]
+    func mapTopRatedItem(_ topRated: [TopRated], _ numberOfItems: Int) -> [DataMovieSection]
 }
 
 struct MovieUseCase: MovieUseCaseType {
+    
+    let repository = MovieRepository.shared
 
     func getTopRatedMovie() -> Observable<PagingInfo<TopRated>> {
         return loadMoreRatedMovie(page: 1)
     }
 
     func loadMoreRatedMovie(page: Int) -> Observable<PagingInfo<TopRated>> {
-        return MovieRepository.shared.getTopRatedMovie(page: page)
+        return repository.getTopRatedMovie(page: page)
+    }
+    
+    func getNowPlaying() -> Observable<PagingInfo<NowPlaying>> {
+        return loadMoreNowPlaying(page: 1)
+    }
+    
+    func loadMoreNowPlaying(page: Int) -> Observable<PagingInfo<NowPlaying>> {
+        return repository.getNowPlaying(page: page)
+    }
+    
+    func mapNowplayingItem(_ nowPlaying: [NowPlaying], _ numberOfItems: Int) -> [DataMovieSection] {
+        var items = nowPlaying.prefix(numberOfItems)
+            .map {
+                DataMovie.nowPlaying(nowPlaying: $0)
+            }
+        items.append(DataMovie.more)
+        return [DataMovieSection(model: "", items: items)]
+    }
+    
+    func mapTopRatedItem(_ topRated: [TopRated], _ numberOfItems: Int) -> [DataMovieSection] {
+        var items = topRated.prefix(numberOfItems)
+            .map {
+                DataMovie.topRated(topRated: $0)
+            }
+        items.append(DataMovie.more)
+        return [DataMovieSection(model: "", items: items)]
     }
 
 }

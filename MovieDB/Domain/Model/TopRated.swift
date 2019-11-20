@@ -12,6 +12,9 @@ struct TopRated {
     var id: Int
     var title: String
     var backdropPath: String
+    var urlImage: String {
+        return API.APIUrl.backdropUrl + backdropPath
+    }
 }
 
 extension TopRated {

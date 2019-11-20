@@ -29,4 +29,5 @@ struct CollectionViewLayout {
         let availableWitdh = screenSize.width - paddingSpace
         return availableWitdh / CGFloat(itemsPerRow)
     }
+
 }
