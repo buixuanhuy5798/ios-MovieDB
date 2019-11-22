@@ -29,6 +29,11 @@ struct MainTabBarNavigator: MainTabBarNavigatorType {
                                          image: Constants.iconCategories,
                                          selectedImage: Constants.iconCategoriesSelected)
         }
+        let categoriesNavigator = CategoriesNavigator()
+        let categoriesUseCase = CategoriesUseCase()
+        let categoriesViewModel = CategoriesViewModel(navigator: categoriesNavigator,
+                                                      useCase: categoriesUseCase)
+        categoriesController.bindViewModel(to: categoriesViewModel)
         let favouriteController = FavouriteController.instantiate().then {
             $0.tabBarItem = UITabBarItem(title: Constants.titleFavouriteTabBar,
                                          image: Constants.iconFavorite,
