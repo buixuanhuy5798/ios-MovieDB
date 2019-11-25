@@ -11,6 +11,7 @@ typealias DataMovieSection = SectionModel<String, DataMovie>
 enum DataMovie {
     case topRated(topRated: TopRated)
     case nowPlaying(nowPlaying: NowPlaying)
+    case popular(popular: Popular)
     case more
 }
 
@@ -26,13 +27,20 @@ extension MovieViewModel: ViewModelType {
 
     struct Input {
         let loadTrigger: Driver<Void>
+        let selectTopRatedTrigger: Driver<IndexPath>
+        let selectNowPlayingTrigger: Driver<IndexPath>
+        let selectPopularTrigger: Driver<IndexPath>
     }
     
     struct Output {
         let topRated: Driver<[DataMovieSection]>
         let nowPlaying: Driver<[DataMovieSection]>
+        let popular: Driver<[DataMovieSection]>
         let error: Driver<Error>
         let indicator: Driver<Bool>
+        let topRatedSelected: Driver<Void>
+        let nowPlayingSelected: Driver<Void>
+        let popularSelected: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -61,12 +69,53 @@ extension MovieViewModel: ViewModelType {
                 self.useCase.mapNowplayingItem($0.items,
                                                Constants.defaultNumberOfMovie)
             }
+        
+        let popularList = input.loadTrigger
+            .flatMapLatest { _ in
+                self.useCase.getPopular()
+                .trackError(error)
+                .trackActivity(indicator)
+                .asDriverOnErrorJustComplete()
+            }
+            .map {
+                self.useCase.mapPopularItem($0.items,
+                                            Constants.defaultNumberOfMovie)
+            }
+        
+        let topRatedSelected = input.selectTopRatedTrigger
+            .withLatestFrom(topRatedList) { indexPath, topRatedList in
+                return topRatedList[0].items[indexPath.row]
+            }
+            .do(onNext: {
+                self.navigator.toNextScreen(dataMovie: $0)
+            })
+            .mapToVoid()
+
+        let nowPlayingSelected = input.selectNowPlayingTrigger
+            .withLatestFrom(nowPlayingList) { indexPath, nowPlayingList in
+                return nowPlayingList[0].items[indexPath.row]
+            }.do(onNext: {
+               self.navigator.toNextScreen(dataMovie: $0)
+            })
+            .mapToVoid()
+        
+        let popularSelected = input.selectPopularTrigger
+             .withLatestFrom(popularList) { indexPath, popularList in
+                 return popularList[0].items[indexPath.row]
+             }.do(onNext: {
+                self.navigator.toNextScreen(dataMovie: $0)
+             })
+             .mapToVoid()
  
         return Output(
             topRated: topRatedList,
             nowPlaying: nowPlayingList,
+            popular: popularList,
             error: error.asDriver(),
-            indicator: indicator.asDriver()
+            indicator: indicator.asDriver(),
+            topRatedSelected: topRatedSelected,
+            nowPlayingSelected: nowPlayingSelected,
+            popularSelected: popularSelected
         )
     }
     

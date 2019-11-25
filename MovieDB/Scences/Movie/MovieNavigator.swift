@@ -7,7 +7,22 @@
 //
 
 protocol MovieNavigatorType {
+    func toNextScreen(dataMovie: DataMovie)
 }
 
 struct MovieNavigator: MovieNavigatorType {
+    func toNextScreen(dataMovie: DataMovie) {
+        switch dataMovie {
+        case .more:
+            toMoreMovie(dataMovie: dataMovie)
+        default:
+            toMovieDetail(dataMovie: dataMovie)
+        }
+    }
+    
+    func toMoreMovie(dataMovie: DataMovie) {
+    }
+    
+    func toMovieDetail(dataMovie: DataMovie) {
+    }
 }

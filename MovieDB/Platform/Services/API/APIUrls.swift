@@ -13,5 +13,6 @@ extension API {
         static let backdropUrl = "https://image.tmdb.org/t/p/w300/"
         static let nowPlayingUrl = baseUrl + "movie/now_playing"
         static let categoriesUrl = baseUrl + "genre/movie/list"
+        static let popularUrl = baseUrl + "movie/popular"
     }
 }
