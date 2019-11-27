@@ -11,6 +11,8 @@ protocol MovieNavigatorType {
 }
 
 struct MovieNavigator: MovieNavigatorType {
+    unowned let navigation: UINavigationController
+    
     func toNextScreen(dataMovie: DataMovie) {
         switch dataMovie {
         case .more:
@@ -28,5 +30,12 @@ struct MovieNavigator: MovieNavigatorType {
     }
     
     func toMovieDetailScreen(movieId: Int) {
+        let controller = MovieDetailController.instantiate()
+        let useCase = MovieDetailUseCase(movieId: movieId)
+        let navigator = MovieDetailNavigator(navigation: navigation)
+        let viewModel = MovieDetailViewModel(navigator: navigator,
+                                             useCase: useCase)
+        controller.bindViewModel(to: viewModel)
+        navigation.pushViewController(controller, animated: true)
     }
 }

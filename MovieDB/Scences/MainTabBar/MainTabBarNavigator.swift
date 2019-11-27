@@ -20,7 +20,7 @@ struct MainTabBarNavigator: MainTabBarNavigatorType {
                                          image: Constants.iconMovie,
                                          selectedImage: Constants.iconMovieSelected)
         }
-        let movieNavigator = MovieNavigator()
+        let movieNavigator = MovieNavigator(navigation: naviagation)
         let movieUseCase = MovieUseCase()
         let movieViewModel = MovieViewModel(navigator: movieNavigator, useCase: movieUseCase)
         movieController.bindViewModel(to: movieViewModel)
