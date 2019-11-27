@@ -42,7 +42,7 @@ final class MovieDetailController: UIViewController, BindableType {
         actorCollectionView.collectionViewLayout = layout
         actorCollectionView.register(cellType: ActorCell.self)
     }
-    
+
     func bindViewModel() {
         let input = MovieDetailViewModel.Input(
                         loadTrigger: Driver.just(()),
@@ -50,7 +50,7 @@ final class MovieDetailController: UIViewController, BindableType {
                     )
         let output = viewModel.transform(input)
         output.movieDetail
-            .drive()
+            .drive(self.rx.movieDetail)
             .disposed(by: rx.disposeBag)
         output.actors
             .drive(actorCollectionView.rx.items) { collectionview, index, item in
@@ -59,34 +59,6 @@ final class MovieDetailController: UIViewController, BindableType {
                 cell.setContentForCell(actor: item)
                 return cell
             }
-            .disposed(by: rx.disposeBag)
-        output.movieDetail
-            .map { $0.title }
-            .drive(titleLabel.rx.text)
-            .disposed(by: rx.disposeBag)
-        output.movieDetail
-            .map { $0.posterImageUrl }
-            .drive(posterImageView.rx.imageUrl)
-            .disposed(by: rx.disposeBag)
-        output.movieDetail
-            .map { $0.backdropImageUrl }
-            .drive(backDropImageView.rx.imageUrl)
-            .disposed(by: rx.disposeBag)
-        output.movieDetail
-            .map { $0.overview }
-            .drive(overviewLabel.rx.text)
-            .disposed(by: rx.disposeBag)
-        output.movieDetail
-            .map { "\($0.voteCount)" }
-            .drive(voteCountLabel.rx.text)
-            .disposed(by: rx.disposeBag)
-        output.movieDetail
-            .map { "\($0.runTime)" }
-            .drive(runTimeLabel.rx.text)
-            .disposed(by: rx.disposeBag)
-        output.movieDetail
-            .map { "\($0.voteAverage)" }
-            .drive(voteAverageLabel.rx.text)
             .disposed(by: rx.disposeBag)
         output.back
             .drive()
@@ -104,3 +76,22 @@ extension MovieDetailController: StoryboardSceneBased {
     static var sceneStoryboard = Storyboards.movieDetail
 }
 
+extension MovieDetailController {
+    func update(movieDetail: MovieDetail) {
+        titleLabel.text = movieDetail.title
+        posterImageView.rx.imageUrl.onNext(movieDetail.posterImageUrl)
+        backDropImageView.rx.imageUrl.onNext(movieDetail.backdropImageUrl)
+        overviewLabel.text = movieDetail.overview
+        voteCountLabel.text = "\(movieDetail.voteCount)"
+        runTimeLabel.text = "\(movieDetail.runTime)"
+        voteAverageLabel.text = "\(movieDetail.voteAverage)"
+    }
+}
+
+extension Reactive where Base: MovieDetailController {
+    var movieDetail: Binder<MovieDetail> {
+        return Binder(self.base) { controller, movieDetail in
+            controller.update(movieDetail: movieDetail)
+        }
+    }
+}
