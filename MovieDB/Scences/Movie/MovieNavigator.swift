@@ -15,14 +15,18 @@ struct MovieNavigator: MovieNavigatorType {
         switch dataMovie {
         case .more:
             toMoreMovie(dataMovie: dataMovie)
-        default:
-            toMovieDetail(dataMovie: dataMovie)
+        case .nowPlaying(let nowPlaying):
+            toMovieDetailScreen(movieId: nowPlaying.id)
+        case .topRated(let topRated):
+            toMovieDetailScreen(movieId: topRated.id)
+        case .popular(let popular):
+            toMovieDetailScreen(movieId: popular.id)
         }
     }
     
     func toMoreMovie(dataMovie: DataMovie) {
     }
     
-    func toMovieDetail(dataMovie: DataMovie) {
+    func toMovieDetailScreen(movieId: Int) {
     }
 }

@@ -84,26 +84,26 @@ extension MovieViewModel: ViewModelType {
         
         let topRatedSelected = input.selectTopRatedTrigger
             .withLatestFrom(topRatedList) { indexPath, topRatedList in
-                return topRatedList[0].items[indexPath.row]
+                return topRatedList.first?.items[indexPath.row]
             }
             .do(onNext: {
-                self.navigator.toNextScreen(dataMovie: $0)
+                self.navigator.toNextScreen(dataMovie: $0 ?? .topRated(topRated: TopRated()))
             })
             .mapToVoid()
 
         let nowPlayingSelected = input.selectNowPlayingTrigger
             .withLatestFrom(nowPlayingList) { indexPath, nowPlayingList in
-                return nowPlayingList[0].items[indexPath.row]
+                return nowPlayingList.first?.items[indexPath.row]
             }.do(onNext: {
-               self.navigator.toNextScreen(dataMovie: $0)
+                self.navigator.toNextScreen(dataMovie: $0 ?? .nowPlaying(nowPlaying: NowPlaying()))
             })
             .mapToVoid()
         
         let popularSelected = input.selectPopularTrigger
              .withLatestFrom(popularList) { indexPath, popularList in
-                 return popularList[0].items[indexPath.row]
+                return popularList.first?.items[indexPath.row]
              }.do(onNext: {
-                self.navigator.toNextScreen(dataMovie: $0)
+                self.navigator.toNextScreen(dataMovie: $0 ?? .popular(popular: Popular()))
              })
              .mapToVoid()
  
