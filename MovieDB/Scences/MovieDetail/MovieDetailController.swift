@@ -60,35 +60,42 @@ final class MovieDetailController: UIViewController, BindableType {
                 return cell
             }
             .disposed(by: rx.disposeBag)
-        output.title
+        output.movieDetail
+            .map { $0.title }
             .drive(titleLabel.rx.text)
             .disposed(by: rx.disposeBag)
-        output.posterImage
+        output.movieDetail
+            .map { $0.posterImageUrl }
             .drive(posterImageView.rx.imageUrl)
             .disposed(by: rx.disposeBag)
-        output.backdropImage
+        output.movieDetail
+            .map { $0.backdropImageUrl }
             .drive(backDropImageView.rx.imageUrl)
             .disposed(by: rx.disposeBag)
-        output.overview
+        output.movieDetail
+            .map { $0.overview }
             .drive(overviewLabel.rx.text)
             .disposed(by: rx.disposeBag)
-        output.voteCount
+        output.movieDetail
+            .map { "\($0.voteCount)" }
             .drive(voteCountLabel.rx.text)
             .disposed(by: rx.disposeBag)
-        output.runTime
+        output.movieDetail
+            .map { "\($0.runTime)" }
             .drive(runTimeLabel.rx.text)
             .disposed(by: rx.disposeBag)
-        output.voteAvarage
+        output.movieDetail
+            .map { "\($0.voteAverage)" }
             .drive(voteAverageLabel.rx.text)
             .disposed(by: rx.disposeBag)
         output.back
             .drive()
             .disposed(by: rx.disposeBag)
         output.error
-            .drive()
+            .drive(rx.error)
             .disposed(by: rx.disposeBag)
         output.indicator
-            .drive()
+            .drive(rx.isLoading)
             .disposed(by: rx.disposeBag)
     }
 }
