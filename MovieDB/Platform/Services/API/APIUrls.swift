@@ -14,5 +14,6 @@ extension API {
         static let nowPlayingUrl = baseUrl + "movie/now_playing"
         static let categoriesUrl = baseUrl + "genre/movie/list"
         static let popularUrl = baseUrl + "movie/popular"
+        static let movieDetailUrl = baseUrl + "movie/"
     }
 }
