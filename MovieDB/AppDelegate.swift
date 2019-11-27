@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            output.toNextScreen
                .drive()
                .disposed(by: rx.disposeBag)
-       }
+    }
+
 }
 

@@ -30,6 +30,7 @@ extension MovieViewModel: ViewModelType {
         let selectTopRatedTrigger: Driver<IndexPath>
         let selectNowPlayingTrigger: Driver<IndexPath>
         let selectPopularTrigger: Driver<IndexPath>
+        let selectSearchTrigger: Driver<Void>
     }
     
     struct Output {
@@ -41,6 +42,7 @@ extension MovieViewModel: ViewModelType {
         let topRatedSelected: Driver<Void>
         let nowPlayingSelected: Driver<Void>
         let popularSelected: Driver<Void>
+        let searchSelected: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -106,7 +108,10 @@ extension MovieViewModel: ViewModelType {
                 self.navigator.toNextScreen(dataMovie: $0 ?? .popular(popular: Popular()))
              })
              .mapToVoid()
- 
+        
+        let searchSelected = input.selectSearchTrigger
+            .do(onNext: self.navigator.toSearch)
+            
         return Output(
             topRated: topRatedList,
             nowPlaying: nowPlayingList,
@@ -115,7 +120,8 @@ extension MovieViewModel: ViewModelType {
             indicator: indicator.asDriver(),
             topRatedSelected: topRatedSelected,
             nowPlayingSelected: nowPlayingSelected,
-            popularSelected: popularSelected
+            popularSelected: popularSelected,
+            searchSelected: searchSelected
         )
     }
     

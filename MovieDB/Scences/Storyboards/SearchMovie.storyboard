@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Movie Controller-->
+        <scene sceneID="owi-GR-Nyn">
+            <objects>
+                <viewController storyboardIdentifier="SearchMovieController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6RF-6F-2g5" customClass="SearchMovieController" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YBn-k7-rpF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search Movie" translatesAutoresizingMaskIntoConstraints="NO" id="4nR-1m-wSX">
+                                <rect key="frame" x="15" y="83" width="384" height="56"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="searchField.textColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsN-gg-kA7">
+                                <rect key="frame" x="12" y="44" width="80" height="11"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="fBJ-u5-aj0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="19"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="17" maxY="0.0"/>
+                                <state key="normal" title="Back" image="chevron.left" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="29" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9WQ-hg-GFM" customClass="LoadMoreTableView" customModule="MGLoadMore">
+                                <rect key="frame" x="0.0" y="152" width="414" height="710"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4nR-1m-wSX" firstAttribute="centerX" secondItem="Kjx-HU-rFa" secondAttribute="centerX" id="F6i-W4-eGi"/>
+                            <constraint firstItem="xsN-gg-kA7" firstAttribute="top" secondItem="Kjx-HU-rFa" secondAttribute="top" constant="11" id="FfE-Dq-mN3"/>
+                            <constraint firstItem="9WQ-hg-GFM" firstAttribute="top" secondItem="4nR-1m-wSX" secondAttribute="bottom" constant="13" id="JeO-Y8-A6J"/>
+                            <constraint firstItem="4nR-1m-wSX" firstAttribute="leading" secondItem="Kjx-HU-rFa" secondAttribute="leading" constant="15" id="LtH-ce-KQh"/>
+                            <constraint firstItem="Kjx-HU-rFa" firstAttribute="trailing" secondItem="9WQ-hg-GFM" secondAttribute="trailing" id="TV1-Vs-r6Z"/>
+                            <constraint firstItem="9WQ-hg-GFM" firstAttribute="leading" secondItem="Kjx-HU-rFa" secondAttribute="leading" id="Viw-vS-kE8"/>
+                            <constraint firstItem="Kjx-HU-rFa" firstAttribute="bottom" secondItem="9WQ-hg-GFM" secondAttribute="bottom" id="eha-xi-Sfd"/>
+                            <constraint firstItem="xsN-gg-kA7" firstAttribute="leading" secondItem="Kjx-HU-rFa" secondAttribute="leading" constant="12" id="g2q-0h-FwR"/>
+                            <constraint firstAttribute="trailing" secondItem="4nR-1m-wSX" secondAttribute="trailing" constant="15" id="lsD-r0-N1C"/>
+                            <constraint firstItem="4nR-1m-wSX" firstAttribute="top" secondItem="xsN-gg-kA7" secondAttribute="bottom" constant="5" id="wOv-N0-p3U"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kjx-HU-rFa"/>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="xsN-gg-kA7" id="uZO-7j-5Yt"/>
+                        <outlet property="resultTableView" destination="9WQ-hg-GFM" id="3HE-Kn-ojI"/>
+                        <outlet property="searchBar" destination="4nR-1m-wSX" id="B18-uD-PnC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GlN-Ma-0ZH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="58.928571428571423"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.left" catalog="system" width="48" height="64"/>
+    </resources>
+</document>

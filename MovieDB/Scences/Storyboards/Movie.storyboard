@@ -176,6 +176,7 @@
                     <connections>
                         <outlet property="nowPlayingCollectionView" destination="p0G-Sc-0SA" id="D3u-ID-Ake"/>
                         <outlet property="popularCollectionView" destination="l7E-6L-3EG" id="0h0-az-C2h"/>
+                        <outlet property="searchButton" destination="CfF-hP-zlW" id="HqD-4b-0Uj"/>
                         <outlet property="topRatedCollectionView" destination="KqZ-yi-h6v" id="6DC-fh-KxK"/>
                     </connections>
                 </viewController>
