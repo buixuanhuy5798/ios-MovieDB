@@ -8,9 +8,9 @@ target 'MovieDB' do
   # Pods for MovieDB
 
     # Clean Architecture
-    pod 'MGArchitecture', '0.3.2'
-    pod 'MGAPIService', '0.3.1'
-    pod 'MGLoadMore', '0.2.1'
+    pod 'MGArchitecture'
+    pod 'MGAPIService'
+    pod 'MGLoadMore'
     
     # Core
     pod 'ObjectMapper'
@@ -21,7 +21,9 @@ target 'MovieDB' do
     
     # Rx
     pod 'NSObject+Rx', '4.3'
-    pod 'RxDataSources', '4.0'
+    pod 'RxDataSources'
+    pod 'RxSwift'
+    pod 'RxCocoa'
     
     # Core Data
     pod 'MagicalRecord'
@@ -29,7 +31,7 @@ target 'MovieDB' do
     #
     pod 'MBProgressHUD'
     pod 'SDWebImage'
-    pod 'CameraManager', '4.0'
+    pod 'YoutubePlayer', '4.0'
 
 
   target 'MovieDBTests' do

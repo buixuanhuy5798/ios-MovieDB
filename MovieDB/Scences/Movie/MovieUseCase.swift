@@ -11,8 +11,11 @@ protocol MovieUseCaseType {
     func getTopRatedMovie() -> Observable<PagingInfo<TopRated>>
     func loadMoreNowPlaying(page: Int) -> Observable<PagingInfo<NowPlaying>>
     func getNowPlaying() -> Observable<PagingInfo<NowPlaying>>
+    func loadMorePopular(page: Int) -> Observable<PagingInfo<Popular>>
+    func getPopular() -> Observable<PagingInfo<Popular>>
     func mapNowplayingItem(_ nowPlaying: [NowPlaying], _ numberOfItems: Int) -> [DataMovieSection]
     func mapTopRatedItem(_ topRated: [TopRated], _ numberOfItems: Int) -> [DataMovieSection]
+    func mapPopularItem(_ popular: [Popular], _ numberOfItems: Int) -> [DataMovieSection]
 }
 
 struct MovieUseCase: MovieUseCaseType {
@@ -35,6 +38,14 @@ struct MovieUseCase: MovieUseCaseType {
         return repository.getNowPlaying(page: page)
     }
     
+    func getPopular() -> Observable<PagingInfo<Popular>> {
+           return repository.getPopular(page: 1)
+    }
+       
+       func loadMorePopular(page: Int) -> Observable<PagingInfo<Popular>> {
+           return repository.getPopular(page: page)
+    }
+    
     func mapNowplayingItem(_ nowPlaying: [NowPlaying], _ numberOfItems: Int) -> [DataMovieSection] {
         var items = nowPlaying.prefix(numberOfItems)
             .map {
@@ -52,5 +63,14 @@ struct MovieUseCase: MovieUseCaseType {
         items.append(DataMovie.more)
         return [DataMovieSection(model: "", items: items)]
     }
-
+    
+    func mapPopularItem(_ popular: [Popular], _ numberOfItems: Int) -> [DataMovieSection] {
+        var items = popular.prefix(numberOfItems)
+        .map {
+            DataMovie.popular(popular: $0)
+        }
+        items.append(DataMovie.more)
+        return [DataMovieSection(model: "", items: items)]
+    }
+    
 }

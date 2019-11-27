@@ -11,6 +11,7 @@ final class MovieController: UIViewController, BindableType {
     // MARK: - Outlets
     @IBOutlet private weak var topRatedCollectionView: UICollectionView!
     @IBOutlet private weak var nowPlayingCollectionView: UICollectionView!
+    @IBOutlet private weak var popularCollectionView: UICollectionView!
     
     // MARK: - Variables
     var viewModel: MovieViewModel!
@@ -38,27 +39,48 @@ final class MovieController: UIViewController, BindableType {
     }
     
     private func config() {
-        [topRatedCollectionView, nowPlayingCollectionView].forEach {
+        [topRatedCollectionView,
+         nowPlayingCollectionView,
+         popularCollectionView].forEach {
             $0?.register(cellType: TopRatedCell.self)
             $0?.register(cellType: MoreCell.self)
             $0?.register(cellType: NowPlayingCell.self)
+            $0?.register(cellType: PopularCell.self)
         }
         configFlowLayout(topRatedCollectionView, topRatedLayoutInfo)
         configFlowLayout(nowPlayingCollectionView, nowPlayingLayoutInfo)
+        configFlowLayout(popularCollectionView, nowPlayingLayoutInfo)
     }
     
     func bindViewModel() {
         let topRatedDatasource =  datasource()
         let nowPlayingDatasource = datasource()
+        let popularDatasource = datasource()
         let input = MovieViewModel.Input(
-            loadTrigger: Driver.just(())
+            loadTrigger: Driver.just(()),
+            selectTopRatedTrigger: topRatedCollectionView.rx.itemSelected.asDriver(),
+            selectNowPlayingTrigger: nowPlayingCollectionView.rx.itemSelected.asDriver(),
+            selectPopularTrigger: popularCollectionView.rx.itemSelected.asDriver()
         )
+        
         let output = viewModel.transform(input)
         output.topRated
             .drive(topRatedCollectionView.rx.items(dataSource: topRatedDatasource))
             .disposed(by: rx.disposeBag)
         output.nowPlaying
             .drive(nowPlayingCollectionView.rx.items(dataSource: nowPlayingDatasource))
+            .disposed(by: rx.disposeBag)
+        output.popular
+            .drive(popularCollectionView.rx.items(dataSource: popularDatasource))
+            .disposed(by: rx.disposeBag)
+        output.nowPlayingSelected
+            .drive()
+            .disposed(by: rx.disposeBag)
+        output.topRatedSelected
+            .drive()
+            .disposed(by: rx.disposeBag)
+        output.popularSelected
+            .drive()
             .disposed(by: rx.disposeBag)
         output.indicator
             .drive(rx.isLoading)
@@ -87,6 +109,10 @@ extension MovieController {
             case .nowPlaying(let nowPlaying):
                 let cell: NowPlayingCell = collectionView.dequeueReusableCell(for: indexPath)
                 cell.setContentCell(nowPlaying: nowPlaying)
+                return cell
+            case .popular(let popular):
+                let cell: PopularCell = collectionView.dequeueReusableCell(for: indexPath)
+                cell.setContentCell(popular: popular)
                 return cell
             }
         }, configureSupplementaryView: {_, _, _, _  in return UICollectionReusableView()})

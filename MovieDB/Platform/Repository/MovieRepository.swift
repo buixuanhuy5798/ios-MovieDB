@@ -9,6 +9,7 @@
 protocol MovieRepositoryType {
     func getTopRatedMovie(page: Int) -> Observable<PagingInfo<TopRated>>
     func getNowPlaying(page: Int) -> Observable<PagingInfo<NowPlaying>>
+    func getPopular(page: Int) -> Observable<PagingInfo<Popular>>
 }
 
 final class MovieRepository: MovieRepositoryType {
@@ -34,6 +35,17 @@ final class MovieRepository: MovieRepositoryType {
                     throw APIInvalidResponseError()
                 }
                 return PagingInfo<NowPlaying>(page: page, items: nowPlaying)
+            }
+    }
+    
+    func getPopular(page: Int) -> Observable<PagingInfo<Popular>> {
+        let input = API.GetPopularInput(page: page)
+        return API.shared.getPopular(input)
+            .map { output in
+                guard let popular = output.popular else {
+                    throw APIInvalidResponseError()
+                }
+                return PagingInfo<Popular>(page: page, items: popular)
             }
     }
 }
