@@ -13,4 +13,5 @@ struct Storyboards {
     static let favourite = UIStoryboard(name: "Favourite", bundle: nil)
     static let started = UIStoryboard(name: "Started", bundle: nil)
     static let movieDetail = UIStoryboard(name: "MovieDetail", bundle: nil)
+    static let playYoutubeTrailer = UIStoryboard(name: "PlayYoutubeTrailer", bundle: nil)
 }
