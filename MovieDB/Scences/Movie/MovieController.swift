@@ -9,6 +9,7 @@
 final class MovieController: UIViewController, BindableType {
     
     // MARK: - Outlets
+    @IBOutlet private weak var searchButton: UIButton!
     @IBOutlet private weak var topRatedCollectionView: UICollectionView!
     @IBOutlet private weak var nowPlayingCollectionView: UICollectionView!
     @IBOutlet private weak var popularCollectionView: UICollectionView!
@@ -60,7 +61,8 @@ final class MovieController: UIViewController, BindableType {
             loadTrigger: Driver.just(()),
             selectTopRatedTrigger: topRatedCollectionView.rx.itemSelected.asDriver(),
             selectNowPlayingTrigger: nowPlayingCollectionView.rx.itemSelected.asDriver(),
-            selectPopularTrigger: popularCollectionView.rx.itemSelected.asDriver()
+            selectPopularTrigger: popularCollectionView.rx.itemSelected.asDriver(),
+            selectSearchTrigger: searchButton.rx.tap.asDriver()
         )
         
         let output = viewModel.transform(input)
@@ -87,6 +89,9 @@ final class MovieController: UIViewController, BindableType {
             .disposed(by: rx.disposeBag)
         output.error
             .drive(rx.error)
+            .disposed(by: rx.disposeBag)
+        output.searchSelected
+            .drive()
             .disposed(by: rx.disposeBag)
     }
 }

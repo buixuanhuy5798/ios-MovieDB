@@ -31,8 +31,7 @@ target 'MovieDB' do
     #
     pod 'MBProgressHUD'
     pod 'SDWebImage'
-    pod 'YoutubePlayer', '4.0'
-
+    pod 'YouTubePlayer'
 
   target 'MovieDBTests' do
     inherit! :search_paths

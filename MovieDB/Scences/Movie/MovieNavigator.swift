@@ -8,6 +8,7 @@
 
 protocol MovieNavigatorType {
     func toNextScreen(dataMovie: DataMovie)
+    func toSearch()
 }
 
 struct MovieNavigator: MovieNavigatorType {
@@ -35,6 +36,15 @@ struct MovieNavigator: MovieNavigatorType {
         let navigator = MovieDetailNavigator(navigation: navigation)
         let viewModel = MovieDetailViewModel(navigator: navigator,
                                              useCase: useCase)
+        controller.bindViewModel(to: viewModel)
+        navigation.pushViewController(controller, animated: true)
+    }
+    
+    func toSearch() {
+        let controller = SearchMovieController.instantiate()
+        let useCase = SearchMovieUseCase()
+        let navigator = SeachMovieNavigator(navigation: navigation)
+        let viewModel = SearchMovieViewModel(navigator: navigator, useCase: useCase)
         controller.bindViewModel(to: viewModel)
         navigation.pushViewController(controller, animated: true)
     }

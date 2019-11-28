@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="221" id="KGk-i7-Jjw" customClass="SearchResultCell" customModule="MovieDB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="436" height="221"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="436" height="221"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K31-ox-Kqh">
+                        <rect key="frame" x="15.5" y="10" width="405" height="201"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QnZ-tJ-05S">
+                                <rect key="frame" x="0.0" y="0.0" width="155.5" height="201"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QnZ-tJ-05S" secondAttribute="height" multiplier="3.1/4" id="5TA-7n-MUf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deadpool 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTb-t4-3ql">
+                                <rect key="frame" x="162.5" y="17.5" width="83" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hM6-me-xGO">
+                                <rect key="frame" x="162.5" y="50.5" width="22.5" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2T-J7-oaf">
+                                <rect key="frame" x="162.5" y="60.5" width="233.5" height="135.5"/>
+                                <string key="text">During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure. sdicsdjd</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hM6-me-xGO" firstAttribute="centerY" secondItem="QnZ-tJ-05S" secondAttribute="centerY" multiplier="0.6" id="362-Mf-d4E"/>
+                            <constraint firstAttribute="trailing" secondItem="U2T-J7-oaf" secondAttribute="trailing" constant="9" id="8sj-XX-Vza"/>
+                            <constraint firstItem="U2T-J7-oaf" firstAttribute="leading" secondItem="hM6-me-xGO" secondAttribute="leading" id="Cog-pI-63C"/>
+                            <constraint firstItem="U2T-J7-oaf" firstAttribute="top" secondItem="QnZ-tJ-05S" secondAttribute="centerY" multiplier="0.6" id="Kzd-xM-mwH"/>
+                            <constraint firstItem="QnZ-tJ-05S" firstAttribute="leading" secondItem="K31-ox-Kqh" secondAttribute="leading" id="TQG-rg-Fux"/>
+                            <constraint firstItem="QnZ-tJ-05S" firstAttribute="top" secondItem="K31-ox-Kqh" secondAttribute="top" id="bOY-tX-Dje"/>
+                            <constraint firstItem="FTb-t4-3ql" firstAttribute="leading" secondItem="QnZ-tJ-05S" secondAttribute="trailing" constant="7" id="dcW-Rw-PJ1"/>
+                            <constraint firstItem="hM6-me-xGO" firstAttribute="leading" secondItem="FTb-t4-3ql" secondAttribute="leading" id="eqz-Xx-VHT"/>
+                            <constraint firstItem="FTb-t4-3ql" firstAttribute="centerY" secondItem="QnZ-tJ-05S" secondAttribute="centerY" multiplier="0.27" id="l8W-JR-Liv"/>
+                            <constraint firstAttribute="bottom" secondItem="QnZ-tJ-05S" secondAttribute="bottom" id="swz-qP-uEc"/>
+                            <constraint firstAttribute="bottom" secondItem="U2T-J7-oaf" secondAttribute="bottom" constant="5" id="xWT-Hf-Ra0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                <constraints>
+                    <constraint firstItem="K31-ox-Kqh" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.91" id="6iw-P1-rQo"/>
+                    <constraint firstItem="K31-ox-Kqh" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.93" id="DtP-Y6-Dxs"/>
+                    <constraint firstItem="K31-ox-Kqh" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hQC-hy-vpQ"/>
+                    <constraint firstItem="K31-ox-Kqh" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="z44-aD-qA6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bounderView" destination="K31-ox-Kqh" id="Fn5-PI-MG0"/>
+                <outlet property="overviewLabel" destination="U2T-J7-oaf" id="Nl0-Et-BjP"/>
+                <outlet property="posterImageView" destination="QnZ-tJ-05S" id="M6d-fg-StS"/>
+                <outlet property="titleLabel" destination="FTb-t4-3ql" id="P9p-ai-VAp"/>
+                <outlet property="voteAverageLabel" destination="hM6-me-xGO" id="dqN-gd-ltu"/>
+            </connections>
+            <point key="canvasLocation" x="155.07246376811597" y="167.07589285714286"/>
+        </tableViewCell>
+    </objects>
+</document>
