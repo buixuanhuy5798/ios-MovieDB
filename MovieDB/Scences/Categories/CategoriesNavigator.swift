@@ -18,8 +18,8 @@ struct CategoriesNavigator: CategoriesNavigatorType {
         let navigator = MovieByCategoryNavigator(navigation: navigation)
         let useCase = MovieByCategoryUseCase()
         let viewModel = MovieByCatgoryViewModel(navigator: navigator,
-                                           useCase: useCase,
-                                           category: catgory)
+                                                useCase: useCase,
+                                                category: catgory)
         viewController.bindViewModel(to: viewModel)
         navigation.pushViewController(viewController, animated: true)
     }

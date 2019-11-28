@@ -59,8 +59,8 @@ extension MovieByCatgoryViewModel: ViewModelType {
         let (page, fetchItems, error, indicator, refreshing, loadingMore) = loadMoreOutput
         
         let movieList = page
-                        .map { $0.items }
-                        .asDriverOnErrorJustComplete()
+            .map { $0.items }
+            .asDriverOnErrorJustComplete()
         
         let movieSelected = input.selectMovie
             .withLatestFrom(movieList) { indexPath, movieList in
