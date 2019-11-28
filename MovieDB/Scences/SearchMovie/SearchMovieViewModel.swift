@@ -29,7 +29,6 @@ extension SearchMovieViewModel: ViewModelType {
         let fetchItems: Driver<Void>
         let selectedBack: Driver<Void>
         let resultSelected: Driver<Void>
-        let back: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -71,9 +70,6 @@ extension SearchMovieViewModel: ViewModelType {
             })
             .mapToVoid()
         
-        let back = input.backTrigger
-            .do(onNext: self.navigator.back)
-        
         return Output(searchResult: searchResult,
                       error: error,
                       indicator: indicator,
@@ -81,7 +77,7 @@ extension SearchMovieViewModel: ViewModelType {
                       loadMore: loadingMore,
                       fetchItems: fetchItems,
                       selectedBack: selectedBack,
-                      resultSelected: resultSelected,
-                      back: back)
+                      resultSelected: resultSelected
+                    )
     }
 }

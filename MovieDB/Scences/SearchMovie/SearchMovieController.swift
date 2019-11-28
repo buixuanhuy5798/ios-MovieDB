@@ -64,7 +64,7 @@ final class SearchMovieController: UIViewController, BindableType {
         output.resultSelected
             .drive()
             .disposed(by: rx.disposeBag)
-        output.back
+        output.selectedBack
             .drive()
             .disposed(by: rx.disposeBag)
     }

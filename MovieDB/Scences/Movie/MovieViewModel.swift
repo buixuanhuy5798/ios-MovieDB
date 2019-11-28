@@ -89,7 +89,8 @@ extension MovieViewModel: ViewModelType {
                 return topRatedList.first?.items[indexPath.row]
             }
             .do(onNext: {
-                self.navigator.toNextScreen(dataMovie: $0 ?? .topRated(topRated: TopRated()))
+                self.navigator.toNextScreen(movieType: .topRated,
+                                            dataMovie: $0 ?? .topRated(topRated: TopRated()))
             })
             .mapToVoid()
 
@@ -97,7 +98,8 @@ extension MovieViewModel: ViewModelType {
             .withLatestFrom(nowPlayingList) { indexPath, nowPlayingList in
                 return nowPlayingList.first?.items[indexPath.row]
             }.do(onNext: {
-                self.navigator.toNextScreen(dataMovie: $0 ?? .nowPlaying(nowPlaying: NowPlaying()))
+                self.navigator.toNextScreen(movieType: .nowPlaying,
+                                            dataMovie: $0 ?? .nowPlaying(nowPlaying: NowPlaying()))
             })
             .mapToVoid()
         
@@ -105,7 +107,8 @@ extension MovieViewModel: ViewModelType {
              .withLatestFrom(popularList) { indexPath, popularList in
                 return popularList.first?.items[indexPath.row]
              }.do(onNext: {
-                self.navigator.toNextScreen(dataMovie: $0 ?? .popular(popular: Popular()))
+                self.navigator.toNextScreen(movieType: .popular,
+                                            dataMovie: $0 ?? .popular(popular: Popular()))
              })
              .mapToVoid()
         
