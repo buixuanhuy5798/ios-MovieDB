@@ -21,8 +21,7 @@ extension MovieShortenDetail {
     init() {
         self.init(id: 0,
                   title: "",
-                  posterPath: ""
-                  )
+                  posterPath: "")
     }
 }
 
