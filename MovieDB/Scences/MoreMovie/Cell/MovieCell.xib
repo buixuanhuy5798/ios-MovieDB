@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MovieCell" customModule="MovieDB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="303" height="337"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="303" height="337"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kk6-l9-62k">
+                        <rect key="frame" x="7" y="0.0" width="289" height="269.5"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THUMOTT CDCDC" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Az7-cm-k1p">
+                        <rect key="frame" x="19.5" y="276.5" width="264" height="53.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                        <color key="textColor" red="0.93163071070000003" green="0.93163071070000003" blue="0.93163071070000003" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Kk6-l9-62k" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="0e4-35-FPF"/>
+                <constraint firstItem="Kk6-l9-62k" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.8" id="79g-Hc-y17"/>
+                <constraint firstItem="Kk6-l9-62k" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="7" id="FSc-oo-ynt"/>
+                <constraint firstAttribute="trailing" secondItem="Kk6-l9-62k" secondAttribute="trailing" constant="7" id="Q6A-pA-yc3"/>
+                <constraint firstItem="Az7-cm-k1p" firstAttribute="top" secondItem="Kk6-l9-62k" secondAttribute="bottom" constant="7" id="faw-6i-y0D"/>
+                <constraint firstAttribute="bottom" secondItem="Az7-cm-k1p" secondAttribute="bottom" constant="7" id="nLh-X9-Yv5"/>
+                <constraint firstItem="Kk6-l9-62k" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="oW7-nH-Q6N"/>
+                <constraint firstItem="Az7-cm-k1p" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.87" id="sYJ-ss-s5d"/>
+                <constraint firstItem="Az7-cm-k1p" firstAttribute="centerX" secondItem="Kk6-l9-62k" secondAttribute="centerX" id="vH7-Hb-fk2"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="303" height="337"/>
+            <connections>
+                <outlet property="nameLabel" destination="Az7-cm-k1p" id="Pmm-Sf-zqT"/>
+                <outlet property="posterImageView" destination="Kk6-l9-62k" id="qUW-QG-UcE"/>
+            </connections>
+            <point key="canvasLocation" x="118.11594202898551" y="193.19196428571428"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -7,17 +7,17 @@
 //
 
 protocol MovieNavigatorType {
-    func toNextScreen(dataMovie: DataMovie)
+    func toNextScreen(movieType: MovieType, dataMovie: DataMovie)
     func toSearch()
 }
 
 struct MovieNavigator: MovieNavigatorType {
     unowned let navigation: UINavigationController
     
-    func toNextScreen(dataMovie: DataMovie) {
+    func toNextScreen(movieType: MovieType, dataMovie: DataMovie) {
         switch dataMovie {
         case .more:
-            toMoreMovie(dataMovie: dataMovie)
+            toMoreMovie(movieType: movieType)
         case .nowPlaying(let nowPlaying):
             toMovieDetailScreen(movieId: nowPlaying.id)
         case .topRated(let topRated):
@@ -27,7 +27,15 @@ struct MovieNavigator: MovieNavigatorType {
         }
     }
     
-    func toMoreMovie(dataMovie: DataMovie) {
+    func toMoreMovie(movieType: MovieType) {
+        let controller = MoreMovieController.instantiate()
+        let useCase = MoreMovieUseCase()
+        let navigator = MoreMovieNavigator(navigation: navigation)
+        let viewModel = MoreMovieViewModel(navigator: navigator,
+                                           useCase: useCase,
+                                           type: movieType)
+        controller.bindViewModel(to: viewModel)
+        navigation.pushViewController(controller, animated: true)
     }
     
     func toMovieDetailScreen(movieId: Int) {

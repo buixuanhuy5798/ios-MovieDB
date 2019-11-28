@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--More Movie Controller-->
+        <scene sceneID="XQ5-hE-7pW">
+            <objects>
+                <viewController storyboardIdentifier="MoreMovieController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5zF-sn-eOx" customClass="MoreMovieController" customModule="MovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="64I-ED-0f2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBn-LN-6V3">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wfz-mn-g0z">
+                                        <rect key="frame" x="12" y="13" width="80" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="5Zu-D1-oFe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="17" maxY="0.0"/>
+                                        <state key="normal" title="Back" image="chevron.left" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0e-I2-9PP">
+                                        <rect key="frame" x="23" y="57" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="23"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4A4-wj-MJr" customClass="LoadMoreCollectionView" customModule="MGLoadMore">
+                                        <rect key="frame" x="0.0" y="64" width="414" height="754"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MaF-Ef-hec">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cIo-B2-JXn">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Qz5-F2-yI4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="w0e-I2-9PP" firstAttribute="top" secondItem="Wfz-mn-g0z" secondAttribute="bottom" constant="23" id="3Xs-I5-sXk"/>
+                                    <constraint firstItem="Wfz-mn-g0z" firstAttribute="top" secondItem="qBn-LN-6V3" secondAttribute="top" constant="13" id="7Hg-dO-oAi"/>
+                                    <constraint firstAttribute="bottom" secondItem="4A4-wj-MJr" secondAttribute="bottom" id="LBP-Sf-FzV"/>
+                                    <constraint firstItem="4A4-wj-MJr" firstAttribute="top" secondItem="w0e-I2-9PP" secondAttribute="bottom" constant="7" id="OhV-aH-tq9"/>
+                                    <constraint firstItem="Wfz-mn-g0z" firstAttribute="leading" secondItem="qBn-LN-6V3" secondAttribute="leading" constant="12" id="PCM-pf-d18"/>
+                                    <constraint firstItem="w0e-I2-9PP" firstAttribute="leading" secondItem="qBn-LN-6V3" secondAttribute="leading" constant="23" id="Qdk-wf-oha"/>
+                                    <constraint firstAttribute="trailing" secondItem="4A4-wj-MJr" secondAttribute="trailing" id="VsE-5L-6eW"/>
+                                    <constraint firstItem="4A4-wj-MJr" firstAttribute="leading" secondItem="qBn-LN-6V3" secondAttribute="leading" id="dVF-Q8-obe"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1Ue-AG-NWK" firstAttribute="bottom" secondItem="qBn-LN-6V3" secondAttribute="bottom" id="MPS-mY-8lU"/>
+                            <constraint firstItem="1Ue-AG-NWK" firstAttribute="trailing" secondItem="qBn-LN-6V3" secondAttribute="trailing" id="ajQ-Oy-eKi"/>
+                            <constraint firstItem="qBn-LN-6V3" firstAttribute="leading" secondItem="1Ue-AG-NWK" secondAttribute="leading" id="im0-qw-nmb"/>
+                            <constraint firstItem="qBn-LN-6V3" firstAttribute="top" secondItem="1Ue-AG-NWK" secondAttribute="top" id="jBl-eR-fbL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1Ue-AG-NWK"/>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="Wfz-mn-g0z" id="D6s-bQ-MUT"/>
+                        <outlet property="movieListCollectionView" destination="4A4-wj-MJr" id="dou-0Y-Hac"/>
+                        <outlet property="typeMovieLabel" destination="w0e-I2-9PP" id="dBT-T9-wLs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BSl-fn-C79" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-101" y="62"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.left" catalog="system" width="48" height="64"/>
+    </resources>
+</document>
