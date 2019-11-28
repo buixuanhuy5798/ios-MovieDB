@@ -10,6 +10,7 @@ final class MovieDetailController: UIViewController, BindableType {
     
     // MARK - Outlets
     
+    @IBOutlet private weak var playTrailerButton: UIButton!
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var favouriteButton: UIButton!
     @IBOutlet private weak var actorCollectionView: UICollectionView!
@@ -46,7 +47,8 @@ final class MovieDetailController: UIViewController, BindableType {
     func bindViewModel() {
         let input = MovieDetailViewModel.Input(
                         loadTrigger: Driver.just(()),
-                        backTrigger: backButton.rx.tap.asDriver()
+                        backTrigger: backButton.rx.tap.asDriver(),
+                        playButtonTrigger: playTrailerButton.rx.tap.asDriver()
                     )
         let output = viewModel.transform(input)
         output.movieDetail
@@ -68,6 +70,9 @@ final class MovieDetailController: UIViewController, BindableType {
             .disposed(by: rx.disposeBag)
         output.indicator
             .drive(rx.isLoading)
+            .disposed(by: rx.disposeBag)
+        output.selectedPlayButton
+            .drive()
             .disposed(by: rx.disposeBag)
     }
 }

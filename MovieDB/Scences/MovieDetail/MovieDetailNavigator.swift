@@ -8,6 +8,7 @@
 
 protocol MovieDetailNavigatorType {
     func back()
+    func toPlayTrailer(keyYoutube: String)
 }
 
 struct MovieDetailNavigator: MovieDetailNavigatorType {
@@ -15,5 +16,16 @@ struct MovieDetailNavigator: MovieDetailNavigatorType {
     
     func back() {
         navigation.popViewController(animated: true)
+    }
+    
+    func toPlayTrailer(keyYoutube: String) {
+        let controller = PlayVideoTrailerController.instantiate()
+        let useCase = PlayVideoTrailerUseCase()
+        let navigator = PlayVideoTrailerNavigator(navigation: navigation)
+        let viewModel = PlayVideoTrailerViewModel(navigator: navigator,
+                                                  useCase: useCase,
+                                                  keyYoutube: keyYoutube)
+        controller.bindViewModel(to: viewModel)
+        navigation.pushViewController(controller, animated: true)
     }
 }
