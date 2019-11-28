@@ -16,5 +16,6 @@ extension API {
         static let popularUrl = baseUrl + "movie/popular"
         static let movieDetailUrl = baseUrl + "movie/"
         static let searchUrl = baseUrl + "search/movie"
+        static let getMovieByCategory = baseUrl + "discover/movie"
     }
 }

@@ -1,17 +1,17 @@
 //
-//  MoreMovieNavigator.swift
+//  MovieByCategoryNavigator.swift
 //  MovieDB
 //
 //  Created by Bùi Xuân Huy on 11/28/19.
 //  Copyright © 2019 huy. All rights reserved.
 //
 
-protocol MoreMovieNavigatorType {
+protocol MovieByCategoryNavigatorType {
     func back()
     func toMovieDetailScreen(movieId: Int)
 }
 
-struct MoreMovieNavigator: MoreMovieNavigatorType {
+struct MovieByCategoryNavigator: MovieByCategoryNavigatorType {
     unowned let navigation: UINavigationController
     
     func back() {

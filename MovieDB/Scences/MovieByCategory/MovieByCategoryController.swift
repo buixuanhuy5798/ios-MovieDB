@@ -1,18 +1,18 @@
 //
-//  MoreMovieController.swift
+//  MovieByCategoryController.swift
 //  MovieDB
 //
 //  Created by Bùi Xuân Huy on 11/28/19.
 //  Copyright © 2019 huy. All rights reserved.
 //
 
-final class MoreMovieController: UIViewController, BindableType {
+final class MovieByCategoryController: UIViewController, BindableType {
     
-    @IBOutlet private weak var typeMovieLabel: UILabel!
-    @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var categoryNameLabel: UILabel!
     @IBOutlet private weak var movieListCollectionView: LoadMoreCollectionView!
+    @IBOutlet private weak var backButton: UIButton!
     
-    var viewModel: MoreMovieViewModel!
+    var viewModel: MovieByCatgoryViewModel!
     private var movieLayoutInfo = CollectionViewLayout(itemSpacing: 7, itemsPerRow: 2)
     
     override func viewDidLoad() {
@@ -33,7 +33,7 @@ final class MoreMovieController: UIViewController, BindableType {
     }
     
     func bindViewModel() {
-        let input = MoreMovieViewModel.Input(
+        let input = MovieByCatgoryViewModel.Input(
             loadTrigger: Driver.just(()),
             reloadTrigger: movieListCollectionView.refreshTrigger,
             loadMoreTrigger: movieListCollectionView.loadMoreTrigger,
@@ -44,8 +44,7 @@ final class MoreMovieController: UIViewController, BindableType {
             .drive()
             .disposed(by: rx.disposeBag)
         output.title
-            .do(onNext: {print ($0)})
-            .drive(typeMovieLabel.rx.text)
+            .drive(categoryNameLabel.rx.text)
             .disposed(by: rx.disposeBag)
         output.movieList
             .drive(movieListCollectionView.rx.items) { collectionview, index, items in
@@ -76,6 +75,6 @@ final class MoreMovieController: UIViewController, BindableType {
     }
 }
 
-extension MoreMovieController: StoryboardSceneBased {
-    static var sceneStoryboard = Storyboards.moreMovie
+extension MovieByCategoryController: StoryboardSceneBased {
+    static var sceneStoryboard = Storyboards.movieByCategory
 }

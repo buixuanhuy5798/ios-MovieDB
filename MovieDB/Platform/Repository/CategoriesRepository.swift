@@ -8,6 +8,7 @@
 
 protocol CategoriesRepositoryType {
     func getAllCategories() -> Observable<[Category]>
+    func getMovieByCategories(page: Int, genreId: Int) -> Observable<PagingInfo<MovieShortenDetail>>
 }
 
 final class CategoriesRepository: CategoriesRepositoryType {
@@ -20,6 +21,17 @@ final class CategoriesRepository: CategoriesRepositoryType {
                     throw APIInvalidResponseError()
                 }
                 return categories
+            }
+    }
+    
+    func getMovieByCategories(page: Int, genreId: Int) -> Observable<PagingInfo<MovieShortenDetail>> {
+        let input = API.GetMovieByCategoryInput(page: page, genreId: genreId)
+        return API.shared.getMovieByCategory(input)
+            .map { output in
+                guard let movie = output.movie else {
+                    throw APIInvalidResponseError()
+                }
+                return PagingInfo<MovieShortenDetail>(page: page, items: movie)
             }
     }
 }

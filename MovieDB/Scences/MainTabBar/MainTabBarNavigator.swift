@@ -29,7 +29,7 @@ struct MainTabBarNavigator: MainTabBarNavigatorType {
                                          image: Constants.iconCategories,
                                          selectedImage: Constants.iconCategoriesSelected)
         }
-        let categoriesNavigator = CategoriesNavigator()
+        let categoriesNavigator = CategoriesNavigator(navigation: naviagation)
         let categoriesUseCase = CategoriesUseCase()
         let categoriesViewModel = CategoriesViewModel(navigator: categoriesNavigator,
                                                       useCase: categoriesUseCase)

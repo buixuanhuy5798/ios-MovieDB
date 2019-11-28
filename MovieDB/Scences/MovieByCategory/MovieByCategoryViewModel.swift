@@ -1,18 +1,18 @@
 //
-//  MoreMovieViewModel.swift
+//  MovieByCategoryViewModel.swift
 //  MovieDB
 //
 //  Created by Bùi Xuân Huy on 11/28/19.
 //  Copyright © 2019 huy. All rights reserved.
 //
 
-struct MoreMovieViewModel {
-    let navigator: MoreMovieNavigatorType
-    let useCase: MoreMovieUseCaseType
-    let type: MovieType
+struct MovieByCatgoryViewModel {
+    let navigator: MovieByCategoryNavigatorType
+    let useCase: MovieByCategoryUseCaseType
+    let category: Category
 }
 
-extension MoreMovieViewModel: ViewModelType {
+extension MovieByCatgoryViewModel: ViewModelType {
     struct Input {
         let loadTrigger: Driver<Void>
         let reloadTrigger: Driver<Void>
@@ -35,11 +35,11 @@ extension MoreMovieViewModel: ViewModelType {
     
     func transform(_ input: Input) -> Output {
         let loadTrigger = input.loadTrigger.map {
-            self.type
+            self.category.id
         }
         
         let title = input.loadTrigger.map {
-            self.type.title
+            self.category.name
         }
         
         let refreshTrigger = input.reloadTrigger

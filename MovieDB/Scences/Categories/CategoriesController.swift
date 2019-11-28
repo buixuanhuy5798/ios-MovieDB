@@ -30,7 +30,8 @@ final class CategoriesController: UIViewController, BindableType {
     
     func bindViewModel() {
         let input = CategoriesViewModel.Input(
-            loadTrigger: Driver.just(())
+            loadTrigger: Driver.just(()),
+            selectCategory: categoriesTableView.rx.itemSelected.asDriver()
         )
         let output = viewModel.transform(input)
         output.categories
@@ -40,6 +41,9 @@ final class CategoriesController: UIViewController, BindableType {
                 cell.setContentForCell(category: item)
                 return cell
             }
+            .disposed(by: rx.disposeBag)
+        output.categorySelected
+            .drive()
             .disposed(by: rx.disposeBag)
         output.error
             .drive()
