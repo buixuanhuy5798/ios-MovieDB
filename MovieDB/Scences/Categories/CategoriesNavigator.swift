@@ -7,7 +7,20 @@
 //
 
 protocol CategoriesNavigatorType {
+    func toMoreMovie(catgory: Category)
 }
 
 struct CategoriesNavigator: CategoriesNavigatorType {
+    unowned let navigation: UINavigationController
+    
+    func toMoreMovie(catgory: Category) {
+        let viewController = MovieByCategoryController.instantiate()
+        let navigator = MovieByCategoryNavigator(navigation: navigation)
+        let useCase = MovieByCategoryUseCase()
+        let viewModel = MovieByCatgoryViewModel(navigator: navigator,
+                                                useCase: useCase,
+                                                category: catgory)
+        viewController.bindViewModel(to: viewModel)
+        navigation.pushViewController(viewController, animated: true)
+    }
 }

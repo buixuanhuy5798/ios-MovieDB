@@ -14,12 +14,14 @@ struct CategoriesViewModel {
 extension CategoriesViewModel: ViewModelType {
     struct Input {
         let loadTrigger: Driver<Void>
+        let selectCategory: Driver<IndexPath>
     }
     
     struct Output {
         let categories: Driver<[Category]>
         let error: Driver<Error>
         let indicator: Driver<Bool>
+        let categorySelected: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -34,10 +36,20 @@ extension CategoriesViewModel: ViewModelType {
                     .asDriverOnErrorJustComplete()
             }
         
+        let categorySelected = input.selectCategory
+            .withLatestFrom(categories) { indexPath, categories in
+                categories[indexPath.row]
+            }
+            .do(onNext: {
+                self.navigator.toMoreMovie(catgory: $0)
+            })
+            .mapToVoid()
+        
         return Output(
             categories: categories,
             error: error.asDriver(),
-            indicator: indicator.asDriver()
+            indicator: indicator.asDriver(),
+            categorySelected: categorySelected
         )
     }
 }

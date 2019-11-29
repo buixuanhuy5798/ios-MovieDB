@@ -40,7 +40,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4A4-wj-MJr" customClass="LoadMoreCollectionView" customModule="MGLoadMore">
-                                        <rect key="frame" x="0.0" y="64" width="414" height="754"/>
+                                        <rect key="frame" x="0.0" y="68" width="414" height="750"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MaF-Ef-hec">
                                             <size key="itemSize" width="50" height="50"/>
@@ -65,7 +65,7 @@
                                     <constraint firstItem="w0e-I2-9PP" firstAttribute="top" secondItem="Wfz-mn-g0z" secondAttribute="bottom" constant="23" id="3Xs-I5-sXk"/>
                                     <constraint firstItem="Wfz-mn-g0z" firstAttribute="top" secondItem="qBn-LN-6V3" secondAttribute="top" constant="13" id="7Hg-dO-oAi"/>
                                     <constraint firstAttribute="bottom" secondItem="4A4-wj-MJr" secondAttribute="bottom" id="LBP-Sf-FzV"/>
-                                    <constraint firstItem="4A4-wj-MJr" firstAttribute="top" secondItem="w0e-I2-9PP" secondAttribute="bottom" constant="7" id="OhV-aH-tq9"/>
+                                    <constraint firstItem="4A4-wj-MJr" firstAttribute="top" secondItem="w0e-I2-9PP" secondAttribute="bottom" constant="11" id="OhV-aH-tq9"/>
                                     <constraint firstItem="Wfz-mn-g0z" firstAttribute="leading" secondItem="qBn-LN-6V3" secondAttribute="leading" constant="12" id="PCM-pf-d18"/>
                                     <constraint firstItem="w0e-I2-9PP" firstAttribute="leading" secondItem="qBn-LN-6V3" secondAttribute="leading" constant="23" id="Qdk-wf-oha"/>
                                     <constraint firstAttribute="trailing" secondItem="4A4-wj-MJr" secondAttribute="trailing" id="VsE-5L-6eW"/>
