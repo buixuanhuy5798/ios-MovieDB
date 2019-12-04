@@ -48,8 +48,9 @@ final class MovieDetailController: UIViewController, BindableType {
         let input = MovieDetailViewModel.Input(
                         loadTrigger: Driver.just(()),
                         backTrigger: backButton.rx.tap.asDriver(),
-                        playButtonTrigger: playTrailerButton.rx.tap.asDriver()
-                    )
+                        playButtonTrigger: playTrailerButton.rx.tap.asDriver(),
+                        favoriteSelectTrigger: favouriteButton.rx.tap.asDriver())
+        
         let output = viewModel.transform(input)
         output.movieDetail
             .drive(self.rx.movieDetail)
@@ -72,6 +73,12 @@ final class MovieDetailController: UIViewController, BindableType {
             .drive(rx.isLoading)
             .disposed(by: rx.disposeBag)
         output.selectedPlayButton
+            .drive()
+            .disposed(by: rx.disposeBag)
+        output.checkMovieExistOnDatabase
+            .drive(favouriteButton.rx.addedFavourite)
+            .disposed(by: rx.disposeBag)
+        output.addFavourite
             .drive()
             .disposed(by: rx.disposeBag)
     }

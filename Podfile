@@ -32,6 +32,7 @@ target 'MovieDB' do
     pod 'MBProgressHUD'
     pod 'SDWebImage'
     pod 'YouTubePlayer'
+    pod 'RxRealm'
 
   target 'MovieDBTests' do
     inherit! :search_paths

@@ -16,6 +16,7 @@ extension MovieDetailViewModel: ViewModelType {
         let loadTrigger: Driver<Void>
         let backTrigger: Driver<Void>
         let playButtonTrigger: Driver<Void>
+        let favoriteSelectTrigger: Driver<Void>
     }
     
     struct Output {
@@ -25,6 +26,8 @@ extension MovieDetailViewModel: ViewModelType {
         let indicator: Driver<Bool>
         let selectedPlayButton: Driver<Void>
         let back: Driver<Void>
+        let checkMovieExistOnDatabase: Driver<Bool>
+        let addFavourite: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -59,12 +62,34 @@ extension MovieDetailViewModel: ViewModelType {
                 self.navigator.toPlayTrailer(keyYoutube: key)
             })
             .mapToVoid()
+        
+        let addFavouriteTrigger = Driver.combineLatest(input.favoriteSelectTrigger, movieDetail)
+        let addFavouriteMovie = addFavouriteTrigger
+            .do(onNext: { _, movieDetail in
+                self.useCase.addOrRemoveFavouriteMovie(movie: movieDetail)
+            })
+            .mapToVoid()
+        
+        let checkTrigger = Driver.combineLatest(input.favoriteSelectTrigger, addFavouriteMovie)
+            .map {
+                return $0.1
+            }
+        
+        let checkMovieExistTrigger = Driver.merge(input.loadTrigger, checkTrigger)
+        
+        let checkMovieExistOnDatabase = checkMovieExistTrigger
+            .flatMapLatest { _ in
+                self.useCase.checkMovieExistOnDatabase()
+                    .asDriverOnErrorJustComplete()
+            }
             
         return Output(movieDetail: movieDetail,
                       actors: actors,
                       error: error.asDriver(),
                       indicator: indicator.asDriver(),
                       selectedPlayButton: selectedPlayButton,
-                      back: back)
+                      back: back,
+                      checkMovieExistOnDatabase: checkMovieExistOnDatabase,
+                      addFavourite: addFavouriteMovie)
     }
 }

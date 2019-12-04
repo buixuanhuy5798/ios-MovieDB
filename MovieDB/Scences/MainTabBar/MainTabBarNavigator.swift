@@ -39,6 +39,10 @@ struct MainTabBarNavigator: MainTabBarNavigatorType {
                                          image: Constants.iconFavorite,
                                          selectedImage: Constants.iconFavouriteSelected)
         }
+        let favouriteUseCase = FavouriteUseCase()
+        let favouriteNavigator = FavouriteNavigator(navigation: naviagation)
+        let favouriteViewModel = FavouriteViewModel(navigator: favouriteNavigator, useCase: favouriteUseCase)
+        favouriteController.bindViewModel(to: favouriteViewModel)
         mainTabBarController.do {
             $0.viewControllers = [movieController,
                                   categoriesController,
